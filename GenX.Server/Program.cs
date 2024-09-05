@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Diagnostics;
+using GenX.Server.Database;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
@@ -28,9 +31,17 @@ using var host = Host.CreateDefaultBuilder(args).ConfigureAppConfiguration((host
 		config.SetBasePath(Environment.CurrentDirectory)
 			.AddJsonFile("appsettings.json", false, true);
 	})
-	.ConfigureServices((hostContext, services) =>
+	.ConfigureServices((context, services) =>
 	{
-		services.AddSingleton(hostContext.Configuration);
+		services.AddOptions();
+
+		var connectionString = context.Configuration.GetConnectionString(Debugger.IsAttached ? "db_core_local" : "db_core");
+
+		services.AddDbContextFactory<ServerContext>(options =>
+			options.UseMySql(connectionString,
+				new MariaDbServerVersion(new Version(10, 11, 7))));
+
+		services.AddSingleton(context.Configuration);
 	}).UseSerilog().Build();
 
 await host.RunAsync();
