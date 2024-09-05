@@ -1,0 +1,9 @@
+﻿################################################################################
+# Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/GenX.Client/bin/Debug/net8.0-windows
+/GenX.Client/obj
+/GenX.Server/bin/Debug/net8.0
+/GenX.Server/obj
