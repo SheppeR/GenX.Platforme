@@ -44,11 +44,7 @@ using var host = Host.CreateDefaultBuilder(args).ConfigureAppConfiguration((host
 
 		services.AddSingleton(context.Configuration);
 	})
-	.ConfigureLogging(builder =>
-	{
-		builder.SetMinimumLevel(LogLevel.Trace); 
-
-	})
+	.ConfigureLogging(builder => { builder.SetMinimumLevel(LogLevel.Trace); })
 	.UseConsoleLifetime().UseSerilog().Build();
 
 await host.RunAsync();
