@@ -1,7 +1,8 @@
-﻿using Microsoft.Extensions.Hosting;
-using System.Windows;
+﻿using System.Windows;
+using GenX.Client.ViewModels.Windows;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Serilog;
 using Sylver.HandlerInvoker;
 using Wpf.Ui;
@@ -19,6 +20,7 @@ public partial class App
 				services.AddHandlers();
 
 				_ = services.AddSingleton<MainWindow>();
+				_ = services.AddSingleton<MainWindowViewModel>();
 
 				_ = services.AddSingleton<INavigationService, NavigationService>();
 				_ = services.AddSingleton<ISnackbarService, SnackbarService>();
@@ -43,5 +45,11 @@ public partial class App
 		_host.Dispose();
 
 		base.OnExit(e);
+	}
+
+	public static T GetRequiredService<T>()
+		where T : class
+	{
+		return _host.Services.GetRequiredService<T>();
 	}
 }
