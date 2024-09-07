@@ -20,6 +20,7 @@
     <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
     <PackageReference Include="SeriLogThemesLibrary" Version="1.0.0.1" />
     <PackageReference Include="WPF-UI" Version="3.0.5" />
+    <PackageReference Include="Sylver.HandlerInvoker" Version="1.1.2" />
   </ItemGroup>
 
 </Project>

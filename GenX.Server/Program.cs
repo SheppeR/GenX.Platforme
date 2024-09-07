@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
 using SeriLogThemesLibrary;
+using Sylver.HandlerInvoker;
 
 Log.Logger = new LoggerConfiguration()
 	.MinimumLevel.Debug()
@@ -32,6 +33,8 @@ using var host = Host.CreateDefaultBuilder(args).ConfigureAppConfiguration((host
 	})
 	.ConfigureServices((context, services) =>
 	{
+		services.AddHandlers();
+
 		services.AddOptions();
 
 		services.AddDbContextFactory<ServerContext>();
