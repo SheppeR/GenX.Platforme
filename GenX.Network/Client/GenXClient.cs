@@ -12,7 +12,7 @@ public class GenXClient : IGenXClient
 	private readonly ClientConnectionContainer _container;
 	private readonly IHandlerInvoker _handlerInvoker;
 
-	public GenXClient(IHandlerInvoker handlerInvoker, IConfiguration configuration, IServiceProvider serviceProvider)
+	public GenXClient(IHandlerInvoker handlerInvoker, IConfiguration configuration)
 	{
 		_handlerInvoker = handlerInvoker;
 
@@ -22,7 +22,6 @@ public class GenXClient : IGenXClient
 		_container = ConnectionFactory.CreateClientConnectionContainer(_host, _port);
 		_container.ConnectionLost += OnConnectionLost;
 		_container.ConnectionEstablished += OnConnectionEstablished;
-		_container.ThrowExceptionOnUndeliverablePackets = true;
 	}
 
 	public Task Disconnect(CloseReason reason)
@@ -41,6 +40,8 @@ public class GenXClient : IGenXClient
 	{
 		return await _container.SendAsync<T>(request);
 	}
+
+	public Task<bool> IsConnected => Task.FromResult(_container.IsAlive_TCP);
 
 	private void OnConnectionEstablished(Connection connection, ConnectionType connectionType)
 	{

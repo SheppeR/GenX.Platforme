@@ -5,6 +5,7 @@ namespace GenX.Network.Client;
 
 public interface IGenXClient
 {
+	Task<bool> IsConnected { get; }
 	Task Disconnect(CloseReason reason);
 
 	void Send(RequestPacket request);

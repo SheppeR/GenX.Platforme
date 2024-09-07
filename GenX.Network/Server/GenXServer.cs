@@ -54,7 +54,6 @@ public class GenXServer : IGenXServer
 		{
 			Log.Error($"Unknow Packet {packet?.GetType()} received from {connection.IPRemoteEndPoint.Address}");
 		}
-
 	}
 
 	private void ConnectionLost(Connection connection, ConnectionType connectionType, CloseReason closeReason)
