@@ -1,0 +1,13 @@
+﻿using Network.Enums;
+using Network.Packets;
+
+namespace GenX.Network.Client;
+
+public interface IGenXClient
+{
+	Task Disconnect(CloseReason reason);
+
+	void Send(RequestPacket request);
+
+	Task<T> SendAndReceive<T>(RequestPacket request) where T : ResponsePacket;
+}

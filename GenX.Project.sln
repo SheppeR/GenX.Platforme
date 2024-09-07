@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenX.Client", "GenX.Client\GenX.Client.csproj", "{9EF2CA62-175D-4B2E-959A-77943757AF1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenX.Client", "GenX.Client\GenX.Client.csproj", "{9EF2CA62-175D-4B2E-959A-77943757AF1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenX.Server", "GenX.Server\GenX.Server.csproj", "{1B310CEB-D648-4D83-B316-3CA1C54BC6D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenX.Server", "GenX.Server\GenX.Server.csproj", "{1B310CEB-D648-4D83-B316-3CA1C54BC6D9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenX.Network", "GenX.Network\GenX.Network.csproj", "{6E16E1CF-4411-4599-9C6C-327C8C8EA6AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1B310CEB-D648-4D83-B316-3CA1C54BC6D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B310CEB-D648-4D83-B316-3CA1C54BC6D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B310CEB-D648-4D83-B316-3CA1C54BC6D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E16E1CF-4411-4599-9C6C-327C8C8EA6AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E16E1CF-4411-4599-9C6C-327C8C8EA6AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E16E1CF-4411-4599-9C6C-327C8C8EA6AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E16E1CF-4411-4599-9C6C-327C8C8EA6AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

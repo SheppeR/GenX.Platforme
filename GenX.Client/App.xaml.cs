@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using GenX.Client.ViewModels.Windows;
+using GenX.Network.Client;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,6 +26,8 @@ public partial class App
 				_ = services.AddSingleton<INavigationService, NavigationService>();
 				_ = services.AddSingleton<ISnackbarService, SnackbarService>();
 				_ = services.AddSingleton<IContentDialogService, ContentDialogService>();
+
+				_ = services.AddSingleton<IGenXClient, GenXClient>();
 			}
 		).UseSerilog()
 		.Build();

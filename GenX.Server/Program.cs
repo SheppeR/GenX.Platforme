@@ -1,4 +1,5 @@
-﻿using GenX.Server.Database;
+﻿using GenX.Network.Server;
+using GenX.Server.Database;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -40,6 +41,9 @@ using var host = Host.CreateDefaultBuilder(args).ConfigureAppConfiguration((host
 		services.AddDbContextFactory<ServerContext>();
 
 		services.AddSingleton(context.Configuration);
+
+		services.AddSingleton<IHostedService, GenXHostedServer>();
+		services.AddSingleton<IGenXServer, GenXServer>();
 	})
 	.ConfigureLogging(builder => { builder.SetMinimumLevel(LogLevel.Trace); })
 	.UseConsoleLifetime().UseSerilog().Build();
