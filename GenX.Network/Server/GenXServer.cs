@@ -50,7 +50,7 @@ public class GenXServer : IGenXServer
 		{
 			_handlerInvoker.Invoke(packet?.GetType(), packet, connection);
 		}
-		catch (Exception e)
+		catch (Exception)
 		{
 			Log.Error($"Unknow Packet {packet?.GetType()} received from {connection.IPRemoteEndPoint.Address}");
 		}
