@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using GenX.Server.Database;
-using Microsoft.EntityFrameworkCore;
+﻿using GenX.Server.Database;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -36,11 +34,7 @@ using var host = Host.CreateDefaultBuilder(args).ConfigureAppConfiguration((host
 	{
 		services.AddOptions();
 
-		var connectionString = context.Configuration.GetConnectionString(Debugger.IsAttached ? "db_core_local" : "db_core");
-
-		services.AddDbContextFactory<ServerContext>(options =>
-			options.UseMySql(connectionString,
-				new MariaDbServerVersion(new Version(10, 11, 7))));
+		services.AddDbContextFactory<ServerContext>();
 
 		services.AddSingleton(context.Configuration);
 	})
