@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using GenX.Client.Utils;
 using GenX.Client.ViewModels.Windows;
 using GenX.Network.Client;
 using Microsoft.Extensions.Configuration;
@@ -32,12 +33,21 @@ public partial class App
 		).UseSerilog()
 		.Build();
 
+	public App()
+	{
+		LoggerHelper.ConfigureLogger();
+	}
+
 	protected override async void OnStartup(StartupEventArgs e)
 	{
 		await _host.StartAsync();
-
-		var _window = _host.Services.GetRequiredService<MainWindow>();
-		_window.Show();
+		var isConnected = await _host.Services.GetRequiredService<IGenXClient>().IsConnected;
+		//TODO HANDLE SERVER DOWN
+		if (isConnected)
+		{
+			var _window = _host.Services.GetRequiredService<MainWindow>();
+			_window.Show();
+		}
 
 		base.OnStartup(e);
 	}
