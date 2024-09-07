@@ -7,3 +7,5 @@
 /GenX.Client/obj
 /GenX.Server/bin/Debug/net8.0
 /GenX.Server/obj
+/GenX.Network/obj
+/GenX.Network/bin/Debug/net8.0
