@@ -46,7 +46,15 @@ public class GenXServer : IGenXServer
 
 	private void OnReceive<T>(T packet, Connection connection)
 	{
-		_handlerInvoker.Invoke(packet?.GetType(), packet, connection);
+		try
+		{
+			_handlerInvoker.Invoke(packet?.GetType(), packet, connection);
+		}
+		catch (Exception e)
+		{
+			Log.Error($"Unknow Packet {packet?.GetType()} received from {connection.IPRemoteEndPoint.Address}");
+		}
+
 	}
 
 	private void ConnectionLost(Connection connection, ConnectionType connectionType, CloseReason closeReason)

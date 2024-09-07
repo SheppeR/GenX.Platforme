@@ -44,7 +44,7 @@ public class GenXClient : IGenXClient
 
 	private void OnConnectionEstablished(Connection connection, ConnectionType connectionType)
 	{
-		Log.Debug($"Client connected from: {connection.IPRemoteEndPoint}	|	Connection Type: {connectionType}");
+		Log.Debug($"Client connected to: {connection.IPRemoteEndPoint}	|	Connection Type: {connectionType}");
 
 		//TODO REGISTER PACKET
 		//connection.RegisterStaticPacketHandler<REQUESTCLASS>(OnReceive);
@@ -57,6 +57,13 @@ public class GenXClient : IGenXClient
 
 	private void OnReceive<T>(T packet, Connection connection)
 	{
-		_handlerInvoker.Invoke(packet?.GetType(), packet, connection);
+		try
+		{
+			_handlerInvoker.Invoke(packet?.GetType(), packet, connection);
+		}
+		catch (Exception e)
+		{
+			Log.Error($"Unknow Packet {packet?.GetType()} received from server");
+		}
 	}
 }
