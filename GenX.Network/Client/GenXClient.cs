@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using GenX.Network.Packets.Login;
+using Microsoft.Extensions.Configuration;
 using Network;
 using Network.Enums;
 using Network.Packets;
@@ -48,7 +49,7 @@ public class GenXClient : IGenXClient
 		Log.Debug($"Client connected to: {connection.IPRemoteEndPoint}	|	Connection Type: {connectionType}");
 
 		//TODO REGISTER PACKET
-		//connection.RegisterStaticPacketHandler<REQUESTCLASS>(OnReceive);
+		connection.RegisterStaticPacketHandler<LoginResponse>(OnReceive);
 	}
 
 	private void OnConnectionLost(Connection connection, ConnectionType connectionType, CloseReason closeReason)

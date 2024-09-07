@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using GenX.Network.Packets.Login;
+using Microsoft.Extensions.Configuration;
 using Network;
 using Network.Enums;
 using Serilog;
@@ -41,7 +42,7 @@ public class GenXServer : IGenXServer
 		Log.Debug($"New connection from {connection.IPRemoteEndPoint} | {connectionType}");
 
 		//TODO REGISTER PACKET
-		//connection.RegisterStaticPacketHandler<REQUESTCLASS>(OnReceive);
+		connection.RegisterStaticPacketHandler<LoginRequest>(OnReceive);
 	}
 
 	private void OnReceive<T>(T packet, Connection connection)
