@@ -12,3 +12,5 @@
 /GenX.Server/bin/Release/net8.0
 /GenX.Network/bin/Release/net8.0
 /GenX.Client/bin/Release/net8.0-windows
+/GenX.Common/bin
+/GenX.Common/obj
