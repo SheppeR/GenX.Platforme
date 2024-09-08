@@ -1,7 +1,7 @@
-﻿using GenX.Server.Database.Entities;
+﻿using GenX.Common.Database.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace GenX.Server.Database;
+namespace GenX.Common.Database;
 
 public interface IServerContext : IDisposable
 {

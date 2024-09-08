@@ -1,5 +1,5 @@
-﻿using GenX.Network.Server;
-using GenX.Server.Database;
+﻿using GenX.Common.Database;
+using GenX.Network.Server;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenX.Server", "GenX.Server\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenX.Network", "GenX.Network\GenX.Network.csproj", "{6E16E1CF-4411-4599-9C6C-327C8C8EA6AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenX.Common", "GenX.Common\GenX.Common.csproj", "{74712D1B-903A-44BA-ABB8-E9E7DEBF33DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6E16E1CF-4411-4599-9C6C-327C8C8EA6AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E16E1CF-4411-4599-9C6C-327C8C8EA6AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E16E1CF-4411-4599-9C6C-327C8C8EA6AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74712D1B-903A-44BA-ABB8-E9E7DEBF33DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74712D1B-903A-44BA-ABB8-E9E7DEBF33DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74712D1B-903A-44BA-ABB8-E9E7DEBF33DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74712D1B-903A-44BA-ABB8-E9E7DEBF33DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,11 +1,11 @@
 ﻿using System.Diagnostics;
-using GenX.Server.Database.Entities;
+using GenX.Common.Database.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 
-namespace GenX.Server.Database;
+namespace GenX.Common.Database;
 
 public class ServerContext : DbContext, IServerContext
 {

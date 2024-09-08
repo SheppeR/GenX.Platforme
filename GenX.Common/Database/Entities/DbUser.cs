@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GenX.Server.Database.Entities;
+namespace GenX.Common.Database.Entities;
 
 [Table("users")]
 public record DbUser : DbEntity

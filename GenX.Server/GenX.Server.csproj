@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GenX.Common\GenX.Common.csproj" />
     <ProjectReference Include="..\GenX.Network\GenX.Network.csproj" />
   </ItemGroup>
 

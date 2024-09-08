@@ -1,6 +1,7 @@
-﻿using GenX.Network.Packets.Login;
-using GenX.Server.Database;
+﻿using GenX.Common.Database;
+using GenX.Network.Packets.Login;
 using Microsoft.EntityFrameworkCore;
+using Network;
 using Sylver.HandlerInvoker.Attributes;
 
 namespace GenX.Server.Handlers;
@@ -16,7 +17,7 @@ public class LoginHandler
 	}
 
 	[HandlerAction(typeof(LoginRequest))]
-	public async void OnHandle(LoginRequest request, GenXConnection client)
+	public async void OnHandle(LoginRequest request, Connection client)
 	{
 		var user = await _context.Users.FirstOrDefaultAsync(u => u.Username != null && u.Username.Equals(request.Username));
 
