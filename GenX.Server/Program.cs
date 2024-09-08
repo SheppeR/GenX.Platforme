@@ -38,7 +38,7 @@ using var host = Host.CreateDefaultBuilder(args).ConfigureAppConfiguration((host
 
 		services.AddOptions();
 
-		services.AddDbContextFactory<ServerContext>();
+		services.AddDbContext<IServerContext, ServerContext>();
 
 		services.AddSingleton(context.Configuration);
 

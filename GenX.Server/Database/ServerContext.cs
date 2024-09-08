@@ -1,10 +1,13 @@
 ﻿using System.Diagnostics;
+using GenX.Server.Database.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 
 namespace GenX.Server.Database;
 
-public class ServerContext : DbContext
+public class ServerContext : DbContext, IServerContext
 {
 	private readonly IConfiguration _configuration;
 
@@ -13,12 +16,24 @@ public class ServerContext : DbContext
 		_configuration = configuration;
 	}
 
-	public bool IsAlive()
+	public DbSet<DbUser> Users { get; set; }
+
+	public async void Migrate()
+	{
+		await Database.MigrateAsync();
+	}
+
+	public async Task<bool> Exists()
+	{
+		return await (this.GetService<IDatabaseCreator>() as RelationalDatabaseCreator)!.ExistsAsync();
+	}
+
+	public async Task<bool> IsAlive()
 	{
 		try
 		{
-			Database.OpenConnection();
-			Database.CloseConnection();
+			await Database.OpenConnectionAsync();
+			await Database.CloseConnectionAsync();
 		}
 		catch (Exception)
 		{
