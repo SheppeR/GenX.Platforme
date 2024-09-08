@@ -9,3 +9,6 @@
 /GenX.Server/obj
 /GenX.Network/obj
 /GenX.Network/bin/Debug/net8.0
+/GenX.Server/bin/Release/net8.0
+/GenX.Network/bin/Release/net8.0
+/GenX.Client/bin/Release/net8.0-windows
