@@ -14,9 +14,14 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.2" />
-    <PackageReference Include="Network" Version="6.2.5.23" />
     <PackageReference Include="Serilog" Version="4.0.1" />
     <PackageReference Include="Sylver.HandlerInvoker" Version="1.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Network">
+      <HintPath>..\Libs\Network.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
