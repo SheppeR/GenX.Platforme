@@ -4,13 +4,13 @@ namespace GenX.Network.Packets.Login;
 
 public class LoginRequest : RequestPacket
 {
-	public LoginRequest(string login, string passwordHash)
+	public LoginRequest(string username, string passwordHash)
 	{
-		Login = login;
+		Username = username;
 		PasswordHash = passwordHash;
 	}
 
 	public string PasswordHash { get; set; }
 
-	public string Login { get; set; }
+	public string Username { get; set; }
 }
