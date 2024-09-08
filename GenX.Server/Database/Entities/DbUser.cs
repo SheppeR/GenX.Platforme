@@ -12,15 +12,15 @@ public record DbUser : DbEntity
 		CreatedAt = DateTime.UtcNow;
 	}
 
-	[Required] public string Username { get; init; }
+	[Required] public string? Username { get; init; }
 
-	[Required] public string Password { get; init; }
+	[Required] public string? Password { get; init; }
 
-	[Required] public string Email { get; init; }
+	[Required] public string? Email { get; init; }
 
-	[Required] public string Pseudo { get; init; }
+	[Required] public string? Pseudo { get; init; }
 
-	[Required] public string AvatarHash { get; init; }
+	[Required] public string? AvatarHash { get; init; }
 
 	[Required]
 	[Column(TypeName = "BIT")]
