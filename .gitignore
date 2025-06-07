@@ -3,14 +3,14 @@
 ################################################################################
 
 /.vs
-/GenX.Client/bin/Debug/net8.0-windows
+/GenX.Client/bin
 /GenX.Client/obj
-/GenX.Server/bin/Debug/net8.0
+/GenX.Server/bin
 /GenX.Server/obj
 /GenX.Network/obj
-/GenX.Network/bin/Debug/net8.0
-/GenX.Server/bin/Release/net8.0
-/GenX.Network/bin/Release/net8.0
-/GenX.Client/bin/Release/net8.0-windows
+/GenX.Network/bin
+/GenX.Server/bin
+/GenX.Network/bin
+/GenX.Client/bin
 /GenX.Common/bin
 /GenX.Common/obj
