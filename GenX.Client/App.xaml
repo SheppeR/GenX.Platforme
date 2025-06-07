@@ -4,17 +4,25 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     xmlns:viewModels="clr-namespace:GenX.Client.ViewModels"
+    xmlns:xf="clr-namespace:XamlFlair.WPF;assembly=XamlFlair.WPF"
     d1p1:Ignorable="d"
     ShutdownMode="OnExplicitShutdown">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ui:ThemesDictionary Theme="Dark" />
-                <ui:ControlsDictionary />
+                <xf:XamlFlairResources />
+                <ui:ThemeResources
+                    AccentColor="#A534F6"
+                    CanBeAccessedAcrossThreads="True"
+                    RequestedTheme="Dark" />
+                <ui:XamlControlsResources />
+                <ResourceDictionary Source="/GenX.Common;component/Helpers/Converters/Converters.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <viewModels:ViewModelLocator x:Key="Locator" d:IsDataSource="True" />
+
+            <!--<SolidColorBrush x:Key="{x:Static ui:ThemeKeys.ApplicationPageBackgroundThemeBrushKey}" Color="#2B2B2B"/>-->
         </ResourceDictionary>
     </Application.Resources>
 </Application>

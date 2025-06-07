@@ -4,13 +4,7 @@ using Network.Packets;
 namespace GenX.Network.Packets.Login;
 
 [PacketRequest(typeof(LoginRequest))]
-public class LoginResponse : ResponsePacket
+public class LoginResponse(LoginResult result, RequestPacket request) : ResponsePacket(request)
 {
-	public LoginResponse(LoginResult result, RequestPacket request)
-		: base(request)
-	{
-		Result = result;
-	}
-
-	public LoginResult Result { get; set; }
+    public LoginResult Result { get; set; } = result;
 }

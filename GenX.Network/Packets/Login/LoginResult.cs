@@ -2,9 +2,9 @@
 
 public enum LoginResult
 {
-	LoginFail,
-	LoginSuccess,
-	AccountBanned,
-	AccountNotFound,
-	LoginUnk
+    LoginSuccess,
+    LoginFail,
+    AccountBanned,
+    AccountNotFound,
+    LoginUnk
 }

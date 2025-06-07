@@ -1,0 +1,153 @@
+2025-06-06 22:19:03 [DBG] Hosting starting
+2025-06-06 22:19:04 [DBG] Checking migration for the database ...
+2025-06-06 22:19:05 [INF] Starting Server on 5555
+2025-06-06 22:19:05 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 22:19:05 [INF] Hosting environment: Production
+2025-06-06 22:19:05 [INF] Content root path: C:\Users\magje\source\repos\GenXProject\GenX.Server\bin\Debug\net9.0-windows\win-x64
+2025-06-06 22:19:05 [DBG] Hosting started
+2025-06-06 22:19:06 [DBG] New connection from [::ffff:127.0.0.1]:53694 | TCP
+2025-06-06 22:19:06 [DBG] New connection from [::ffff:127.0.0.1]:53695 | UDP
+2025-06-06 22:32:18 [DBG] Hosting starting
+2025-06-06 22:32:18 [DBG] Checking migration for the database ...
+2025-06-06 22:32:19 [INF] Starting Server on 5555
+2025-06-06 22:32:19 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 22:32:19 [INF] Hosting environment: Production
+2025-06-06 22:32:19 [INF] Content root path: C:\Users\magje\source\repos\GenXProject\GenX.Server\bin\Debug\net9.0-windows\win-x64
+2025-06-06 22:32:19 [DBG] Hosting started
+2025-06-06 22:32:20 [DBG] New connection from [::ffff:127.0.0.1]:53999 | TCP
+2025-06-06 22:32:20 [DBG] New connection from [::ffff:127.0.0.1]:54000 | UDP
+2025-06-06 22:38:47 [DBG] Hosting starting
+2025-06-06 22:38:47 [DBG] Checking migration for the database ...
+2025-06-06 22:38:48 [INF] Starting Server on 5555
+2025-06-06 22:38:48 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 22:38:48 [INF] Hosting environment: Production
+2025-06-06 22:38:48 [INF] Content root path: C:\Users\magje\source\repos\GenXProject\GenX.Server\bin\Debug\net9.0-windows\win-x64
+2025-06-06 22:38:48 [DBG] Hosting started
+2025-06-06 22:38:49 [DBG] New connection from [::ffff:127.0.0.1]:54066 | TCP
+2025-06-06 22:38:49 [DBG] New connection from [::ffff:127.0.0.1]:54067 | UDP
+2025-06-06 22:39:57 [DBG] Hosting starting
+2025-06-06 22:39:58 [DBG] Checking migration for the database ...
+2025-06-06 22:39:59 [INF] Starting Server on 5555
+2025-06-06 22:39:59 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 22:39:59 [INF] Hosting environment: Production
+2025-06-06 22:39:59 [INF] Content root path: C:\Users\magje\source\repos\GenXProject\GenX.Server\bin\Debug\net9.0-windows\win-x64
+2025-06-06 22:39:59 [DBG] Hosting started
+2025-06-06 22:39:59 [DBG] New connection from [::ffff:127.0.0.1]:54080 | TCP
+2025-06-06 22:40:00 [DBG] New connection from [::ffff:127.0.0.1]:54081 | UDP
+2025-06-06 22:40:40 [DBG] Hosting starting
+2025-06-06 22:40:41 [DBG] Checking migration for the database ...
+2025-06-06 22:40:42 [INF] Starting Server on 5555
+2025-06-06 22:40:42 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 22:40:42 [INF] Hosting environment: Production
+2025-06-06 22:40:42 [INF] Content root path: C:\Users\magje\source\repos\GenXProject\GenX.Server\bin\Debug\net9.0-windows\win-x64
+2025-06-06 22:40:42 [DBG] Hosting started
+2025-06-06 22:40:42 [DBG] New connection from [::ffff:127.0.0.1]:54095 | TCP
+2025-06-06 22:40:42 [DBG] New connection from [::ffff:127.0.0.1]:54098 | UDP
+2025-06-06 22:51:29 [DBG] Hosting starting
+2025-06-06 22:51:30 [DBG] Checking migration for the database ...
+2025-06-06 22:51:31 [INF] Starting Server on 5555
+2025-06-06 22:51:31 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 22:51:31 [INF] Hosting environment: Production
+2025-06-06 22:51:31 [INF] Content root path: C:\Users\magje\source\repos\GenXProject\GenX.Server\bin\Debug\net9.0-windows\win-x64
+2025-06-06 22:51:31 [DBG] Hosting started
+2025-06-06 22:51:31 [DBG] New connection from [::ffff:127.0.0.1]:54219 | TCP
+2025-06-06 22:51:31 [DBG] New connection from [::ffff:127.0.0.1]:54220 | UDP
+2025-06-06 22:54:57 [DBG] Hosting starting
+2025-06-06 22:54:57 [DBG] Checking migration for the database ...
+2025-06-06 22:54:58 [INF] Starting Server on 5555
+2025-06-06 22:54:58 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 22:54:58 [INF] Hosting environment: Production
+2025-06-06 22:54:58 [INF] Content root path: C:\Users\magje\source\repos\GenXProject\GenX.Server\bin\Debug\net9.0-windows\win-x64
+2025-06-06 22:54:58 [DBG] Hosting started
+2025-06-06 22:54:59 [DBG] New connection from [::ffff:127.0.0.1]:54260 | TCP
+2025-06-06 22:54:59 [DBG] New connection from [::ffff:127.0.0.1]:54261 | UDP
+2025-06-06 23:00:42 [DBG] Hosting starting
+2025-06-06 23:00:42 [DBG] Checking migration for the database ...
+2025-06-06 23:00:43 [INF] Starting Server on 5555
+2025-06-06 23:00:43 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 23:00:43 [INF] Hosting environment: Production
+2025-06-06 23:00:43 [INF] Content root path: C:\Users\magje\source\repos\GenXProject\GenX.Server\bin\Debug\net9.0-windows\win-x64
+2025-06-06 23:00:43 [DBG] Hosting started
+2025-06-06 23:00:43 [DBG] New connection from [::ffff:127.0.0.1]:54331 | TCP
+2025-06-06 23:00:44 [DBG] New connection from [::ffff:127.0.0.1]:54332 | UDP
+2025-06-06 23:08:26 [DBG] Hosting starting
+2025-06-06 23:08:26 [DBG] Checking migration for the database ...
+2025-06-06 23:08:27 [INF] Starting Server on 5555
+2025-06-06 23:08:27 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 23:08:27 [INF] Hosting environment: Production
+2025-06-06 23:08:27 [INF] Content root path: C:\Users\magje\source\repos\GenXProject\GenX.Server\bin\Debug\net9.0-windows\win-x64
+2025-06-06 23:08:27 [DBG] Hosting started
+2025-06-06 23:08:28 [DBG] New connection from [::ffff:127.0.0.1]:54432 | TCP
+2025-06-06 23:08:28 [DBG] New connection from [::ffff:127.0.0.1]:54433 | UDP
+2025-06-06 23:11:31 [DBG] Hosting starting
+2025-06-06 23:11:31 [DBG] Checking migration for the database ...
+2025-06-06 23:11:32 [INF] Starting Server on 5555
+2025-06-06 23:11:32 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 23:11:32 [INF] Hosting environment: Production
+2025-06-06 23:11:32 [INF] Content root path: C:\Users\magje\source\repos\GenXProject\GenX.Server\bin\Debug\net9.0-windows\win-x64
+2025-06-06 23:11:32 [DBG] Hosting started
+2025-06-06 23:11:33 [DBG] New connection from [::ffff:127.0.0.1]:54457 | TCP
+2025-06-06 23:11:33 [DBG] New connection from [::ffff:127.0.0.1]:54458 | UDP
+2025-06-06 23:15:14 [DBG] Hosting starting
+2025-06-06 23:15:14 [DBG] Checking migration for the database ...
+2025-06-06 23:15:15 [INF] Starting Server on 5555
+2025-06-06 23:15:15 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 23:15:15 [INF] Hosting environment: Production
+2025-06-06 23:15:15 [INF] Content root path: C:\Users\magje\source\repos\GenXProject\GenX.Server\bin\Debug\net9.0-windows\win-x64
+2025-06-06 23:15:15 [DBG] Hosting started
+2025-06-06 23:15:16 [DBG] New connection from [::ffff:127.0.0.1]:54501 | TCP
+2025-06-06 23:15:16 [DBG] New connection from [::ffff:127.0.0.1]:54502 | UDP
+2025-06-06 23:19:50 [DBG] Hosting starting
+2025-06-06 23:19:50 [DBG] Checking migration for the database ...
+2025-06-06 23:19:51 [INF] Starting Server on 5555
+2025-06-06 23:19:51 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 23:19:51 [INF] Hosting environment: Production
+2025-06-06 23:19:51 [INF] Content root path: C:\Users\magje\source\repos\GenXProject\GenX.Server\bin\Debug\net9.0-windows\win-x64
+2025-06-06 23:19:51 [DBG] Hosting started
+2025-06-06 23:19:52 [DBG] New connection from [::ffff:127.0.0.1]:54559 | TCP
+2025-06-06 23:19:52 [DBG] New connection from [::ffff:127.0.0.1]:54563 | UDP
+2025-06-06 23:21:34 [DBG] Hosting starting
+2025-06-06 23:21:34 [DBG] Checking migration for the database ...
+2025-06-06 23:21:35 [INF] Starting Server on 5555
+2025-06-06 23:21:35 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 23:21:35 [INF] Hosting environment: Production
+2025-06-06 23:21:35 [INF] Content root path: C:\Users\magje\source\repos\GenXProject\GenX.Server\bin\Debug\net9.0-windows\win-x64
+2025-06-06 23:21:35 [DBG] Hosting started
+2025-06-06 23:21:36 [DBG] New connection from [::ffff:127.0.0.1]:54584 | TCP
+2025-06-06 23:21:36 [DBG] New connection from [::ffff:127.0.0.1]:54587 | UDP
+2025-06-06 23:25:29 [DBG] Hosting starting
+2025-06-06 23:25:30 [DBG] Checking migration for the database ...
+2025-06-06 23:25:31 [INF] Starting Server on 5555
+2025-06-06 23:25:31 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 23:25:31 [INF] Hosting environment: Production
+2025-06-06 23:25:31 [INF] Content root path: C:\Users\magje\source\repos\GenXProject\GenX.Server\bin\Debug\net9.0-windows\win-x64
+2025-06-06 23:25:31 [DBG] Hosting started
+2025-06-06 23:25:31 [DBG] New connection from [::ffff:127.0.0.1]:54641 | TCP
+2025-06-06 23:25:31 [DBG] New connection from [::ffff:127.0.0.1]:54644 | UDP
+2025-06-06 23:49:02 [DBG] Hosting starting
+2025-06-06 23:49:03 [DBG] Checking migration for the database ...
+2025-06-06 23:49:04 [INF] Starting Server on 5555
+2025-06-06 23:49:04 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 23:49:04 [INF] Hosting environment: Production
+2025-06-06 23:49:04 [INF] Content root path: C:\Users\magje\source\repos\GenXProject\GenX.Server\bin\Debug\net9.0-windows\win-x64
+2025-06-06 23:49:04 [DBG] Hosting started
+2025-06-06 23:49:05 [DBG] New connection from [::ffff:127.0.0.1]:55030 | TCP
+2025-06-06 23:49:05 [DBG] New connection from [::ffff:127.0.0.1]:55033 | UDP
+2025-06-06 23:52:26 [DBG] Hosting starting
+2025-06-06 23:52:27 [DBG] Checking migration for the database ...
+2025-06-06 23:52:28 [INF] Starting Server on 5555
+2025-06-06 23:52:28 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 23:52:28 [INF] Hosting environment: Production
+2025-06-06 23:52:28 [INF] Content root path: C:\Users\magje\source\repos\GenXProject\GenX.Server\bin\Debug\net9.0-windows\win-x64
+2025-06-06 23:52:28 [DBG] Hosting started
+2025-06-06 23:52:28 [DBG] New connection from [::ffff:127.0.0.1]:55068 | TCP
+2025-06-06 23:52:29 [DBG] New connection from [::ffff:127.0.0.1]:55071 | UDP
+2025-06-06 23:53:12 [DBG] Hosting starting
+2025-06-06 23:53:13 [DBG] Checking migration for the database ...
+2025-06-06 23:53:14 [INF] Starting Server on 5555
+2025-06-06 23:53:14 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 23:53:14 [INF] Hosting environment: Production
+2025-06-06 23:53:14 [INF] Content root path: C:\Users\magje\source\repos\GenXProject\GenX.Server\bin\Debug\net9.0-windows\win-x64
+2025-06-06 23:53:14 [DBG] Hosting started
+2025-06-06 23:53:14 [DBG] New connection from [::ffff:127.0.0.1]:55081 | TCP
+2025-06-06 23:53:14 [DBG] New connection from [::ffff:127.0.0.1]:55085 | UDP

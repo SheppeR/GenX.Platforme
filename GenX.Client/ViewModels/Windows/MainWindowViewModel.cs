@@ -2,6 +2,4 @@
 
 namespace GenX.Client.ViewModels.Windows;
 
-public class MainWindowViewModel : ObservableRecipient
-{
-}
+public partial class MainWindowViewModel : ObservableRecipient;

@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "Nouveau profil",
+    "Projects": [
+      {
+        "Path": "GenX.Server\\GenX.Server.csproj",
+        "Action": "Start",
+        "DebugTarget": "GenX.Server"
+      },
+      {
+        "Path": "GenX.Client\\GenX.Client.csproj",
+        "Action": "Start",
+        "DebugTarget": "GenX.Client"
+      }
+    ]
+  }
+]

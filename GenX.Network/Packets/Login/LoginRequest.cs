@@ -2,15 +2,9 @@
 
 namespace GenX.Network.Packets.Login;
 
-public class LoginRequest : RequestPacket
+public class LoginRequest(string username, string? passwordHash) : RequestPacket
 {
-	public LoginRequest(string username, string passwordHash)
-	{
-		Username = username;
-		PasswordHash = passwordHash;
-	}
+    public string? PasswordHash { get; set; } = passwordHash;
 
-	public string PasswordHash { get; set; }
-
-	public string Username { get; set; }
+    public string Username { get; set; } = username;
 }

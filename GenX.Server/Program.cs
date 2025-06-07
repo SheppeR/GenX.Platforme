@@ -1,51 +1,52 @@
-﻿using GenX.Common.Database;
-using GenX.Network.Server;
+﻿using GenX.Common.Extensions;
+using GenX.Common.Helpers.Logger;
+using GenX.Server.Controllers;
+using GenX.Server.Database;
+using GenX.Server.Network;
+using GenX.Server.Options;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
-using Serilog.Events;
-using SeriLogThemesLibrary;
 using Sylver.HandlerInvoker;
 
-Log.Logger = new LoggerConfiguration()
-	.MinimumLevel.Debug()
-	.MinimumLevel.Override("Microsoft", LogEventLevel.Debug)
-	.Enrich.FromLogContext()
-	.WriteTo.Console(
-		outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level:u3}] {Message:lj}{NewLine}{Exception}",
-		theme: SeriLogCustomThemes.Theme1())
-	.WriteTo.File(
-		"Logs/Server.log",
-		rollingInterval: RollingInterval.Day,
-		fileSizeLimitBytes: 10 * 1024 * 1024,
-		retainedFileCountLimit: 2,
-		rollOnFileSizeLimit: true,
-		shared: true,
-		outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}",
-		flushToDiskInterval: TimeSpan.FromSeconds(1))
-	.CreateLogger();
+namespace GenX.Server;
 
-using var host = Host.CreateDefaultBuilder(args).ConfigureAppConfiguration((hostContext, config) =>
-	{
-		config.SetBasePath(Environment.CurrentDirectory)
-			.AddJsonFile("appsettings.json", false, true);
-	})
-	.ConfigureServices((context, services) =>
-	{
-		services.AddHandlers();
+public static class Program
+{
+    public static IHost? Host { get; private set; }
 
-		services.AddOptions();
+    private static async Task Main(string[] args)
+    {
+        Log.Logger = SerilogUtils.SetupServer();
 
-		services.AddDbContext<IServerContext, ServerContext>();
+        Host = Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args).ConfigureAppConfiguration((_, config) =>
+            {
+                config.SetBasePath(Environment.CurrentDirectory)
+                    .AddJsonFile("appsettings.json", false, true);
+            })
+            .ConfigureServices((context, services) =>
+            {
+                services.AddHandlers();
 
-		services.AddSingleton(context.Configuration);
+                services.ConfigureWritable<ServerInfos>(context.Configuration.GetSection("ServerInfos"));
 
-		services.AddSingleton<IHostedService, GenXHostedServer>();
-		services.AddSingleton<IGenXServer, GenXServer>();
-	})
-	.ConfigureLogging(builder => { builder.SetMinimumLevel(LogLevel.Trace); })
-	.UseConsoleLifetime().UseSerilog().Build();
+                services.AddDbContext<IAppDBContext, AppDBContext>(options =>
+                    options.UseMySql(context.Configuration.GetConnectionString("DefaultConnection"),
+                        ServerVersion.AutoDetect(context.Configuration.GetConnectionString("DefaultConnection"))));
 
-await host.RunAsync();
+                services.AddSingleton<IUserController, UserController>();
+
+                services.AddSingleton<IHostedService, GenXServerService>();
+                services.AddSingleton<IGenXServer, GenXServer>();
+            }).ConfigureLogging(builder =>
+            {
+                builder.AddFilter("Microsoft", LogLevel.Warning);
+                builder.SetMinimumLevel(LogLevel.Trace);
+            }).UseConsoleLifetime().UseSerilog().Build();
+
+        await Host.RunAsync();
+    }
+}
