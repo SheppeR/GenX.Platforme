@@ -2,6 +2,4 @@
 
 namespace GenX.Client.ViewModels.Windows;
 
-public class LoadingWindowViewModel : ObservableRecipient
-{
-}
+public class LoadingWindowViewModel : ObservableRecipient;

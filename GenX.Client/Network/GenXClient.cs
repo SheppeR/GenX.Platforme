@@ -1,6 +1,8 @@
 ﻿using GenX.Client.Options;
+using GenX.Network.Packets.FriendsDatas;
 using GenX.Network.Packets.Login;
 using GenX.Network.Packets.Logout;
+using GenX.Network.Packets.UserDatas;
 using Microsoft.Extensions.Options;
 using Network;
 using Network.Enums;
@@ -50,6 +52,8 @@ public class GenXClient : IGenXClient
         //TODO REGISTER PACKET
         connection.RegisterStaticPacketHandler<LoginResponse>(OnReceive);
         connection.RegisterStaticPacketHandler<LogoutResponse>(OnReceive);
+        connection.RegisterStaticPacketHandler<UserDatasResponse>(OnReceive);
+        connection.RegisterStaticPacketHandler<FriendsDatasResponse>(OnReceive);
     }
 
     private void OnReceive<T>(T packet, Connection connection)

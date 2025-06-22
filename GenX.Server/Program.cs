@@ -1,6 +1,6 @@
 ﻿using GenX.Common.Extensions;
 using GenX.Common.Helpers.Logger;
-using GenX.Server.Controllers;
+using GenX.Server.Controllers.Users;
 using GenX.Server.Database;
 using GenX.Server.Network;
 using GenX.Server.Options;

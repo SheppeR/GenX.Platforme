@@ -1,5 +1,5 @@
 ﻿using GenX.Network.Packets.Login;
-using GenX.Server.Controllers;
+using GenX.Server.Controllers.Users;
 using Network;
 using Sylver.HandlerInvoker.Attributes;
 

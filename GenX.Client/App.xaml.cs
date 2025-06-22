@@ -5,6 +5,7 @@ using GenX.Client.Properties;
 using GenX.Client.View;
 using GenX.Client.ViewModels.Windows;
 using GenX.Common.Extensions;
+using GenX.Common.Helpers.Controls;
 using GenX.Common.Helpers.Localizer;
 using GenX.Common.Helpers.Logger;
 using Microsoft.Extensions.Configuration;
@@ -52,6 +53,8 @@ public partial class App
 
     protected override async void OnStartup(StartupEventArgs e)
     {
+        ConsoleManager.Show();
+
         if (e.Args.Length != 0)
             foreach (var arg in e.Args)
                 switch (arg)

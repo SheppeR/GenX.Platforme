@@ -10,8 +10,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="Assets\bg.jpg" />
-	  <None Remove="Assets\logo.png" />
+		<None Remove="Assets\bg.jpg" />
+		<None Remove="Assets\logo.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -20,14 +20,14 @@
 		<PackageReference Include="CodingSeb.Localization.WPF" Version="1.4.1" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="iNKORE.UI.WPF.Modern" Version="0.10.0" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.5" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.5" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.5" />
-		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.5" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.6" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.6" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.6" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.6" />
 		<PackageReference Include="Network" Version="6.2.5.23" />
 		<PackageReference Include="Serilog" Version="4.3.0" />
 		<PackageReference Include="Serilog.Extensions.Hosting" Version="9.0.0" />
-		<PackageReference Include="Serilog.Extensions.Logging" Version="9.0.1" />
+		<PackageReference Include="Serilog.Extensions.Logging" Version="9.0.2" />
 		<PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
 		<PackageReference Include="Sylver.HandlerInvoker" Version="1.1.2" />
 		<PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
@@ -38,11 +38,11 @@
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="Properties\Settings.settings">
-		  <Generator>SettingsSingleFileGenerator</Generator>
-		  <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
 		</None>
 		<None Update="Resources\Localization.loc.json">
-		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
 
@@ -52,22 +52,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Reference Include="XamlFlair.WPF">
-	    <HintPath>..\Libraries\XamlFlair.WPF\XamlFlair.WPF.dll</HintPath>
-	  </Reference>
+		<Reference Include="XamlFlair.WPF">
+			<HintPath>..\Libraries\XamlFlair.WPF\XamlFlair.WPF.dll</HintPath>
+		</Reference>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Resource Include="Assets\bg.jpg" />
-	  <Resource Include="Assets\logo.png" />
+		<Resource Include="Assets\bg.jpg" />
+		<Resource Include="Assets\logo.png" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Properties\Settings.Designer.cs">
-	    <DesignTimeSharedInput>True</DesignTimeSharedInput>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Settings.settings</DependentUpon>
-	  </Compile>
+		<Compile Update="Properties\Settings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Settings.settings</DependentUpon>
+		</Compile>
 	</ItemGroup>
 
 </Project>

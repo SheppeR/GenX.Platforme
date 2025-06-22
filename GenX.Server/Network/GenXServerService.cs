@@ -1,9 +1,8 @@
 ﻿using GenX.Common.Helpers.Logger;
 using GenX.Server.Database;
-using GenX.Server.Network;
 using Microsoft.Extensions.Hosting;
 
-namespace GenX.Server;
+namespace GenX.Server.Network;
 
 public class GenXServerService(IGenXServer genXServer, IAppDBContext appDbContext) : IHostedService
 {

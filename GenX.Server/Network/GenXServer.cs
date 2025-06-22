@@ -1,6 +1,8 @@
 ﻿using GenX.Common.Options;
+using GenX.Network.Packets.FriendsDatas;
 using GenX.Network.Packets.Login;
 using GenX.Network.Packets.Logout;
+using GenX.Network.Packets.UserDatas;
 using GenX.Server.Database;
 using GenX.Server.Options;
 using Network;
@@ -35,7 +37,7 @@ public class GenXServer : IGenXServer
     {
         Log.Information($"Starting Server on {_container.Port}");
 
-        _container.Start();
+        _ = _container.Start();
 
         return Task.CompletedTask;
     }
@@ -63,16 +65,15 @@ public class GenXServer : IGenXServer
         //TODO REGISTER PACKET
         connection.RegisterStaticPacketHandler<LoginRequest>(OnReceive);
         connection.RegisterStaticPacketHandler<LogoutRequest>(OnReceive);
+        connection.RegisterStaticPacketHandler<UserDatasRequest>(OnReceive);
+        connection.RegisterStaticPacketHandler<FriendsDatasRequest>(OnReceive);
     }
 
     private void OnReceive<T>(T packet, Connection connection)
     {
         try
         {
-            if (packet?.GetType() == typeof(LoginRequest))
-                _handlerInvoker.Invoke(packet.GetType(), packet, connection);
-            else
-                _handlerInvoker.Invoke(packet?.GetType(), packet, this[connection]);
+            _handlerInvoker.Invoke(packet?.GetType(), packet, connection);
         }
         catch (Exception)
         {

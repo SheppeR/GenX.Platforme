@@ -9,10 +9,14 @@ public class SerilogUtils
     public static Serilog.Core.Logger SetupClient()
     {
         return new LoggerConfiguration()
+            .MinimumLevel.Override("Microsoft.EntityFrameworkCore.Database.Command", LogEventLevel.Fatal)
+            .MinimumLevel.Override("Pomelo.EntityFrameworkCore.MySql", LogEventLevel.Fatal)
+            .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Fatal)
             .MinimumLevel.Debug()
-            .MinimumLevel.Override("Microsoft", LogEventLevel.Debug)
-            .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Error)
             .Enrich.FromLogContext()
+            .WriteTo.Console(
+                outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level:u3}] {Message:lj}{NewLine}{Exception}",
+                theme: Theme())
             .WriteTo.File(
                 "Logs/Clients.log",
                 rollingInterval: RollingInterval.Day,
@@ -28,7 +32,7 @@ public class SerilogUtils
     public static Serilog.Core.Logger SetupServer()
     {
         return new LoggerConfiguration()
-            .MinimumLevel.Override("Microsoft.EntityFrameworkCore.Database.Command", LogEventLevel.Fatal) // ou Error
+            .MinimumLevel.Override("Microsoft.EntityFrameworkCore.Database.Command", LogEventLevel.Fatal)
             .MinimumLevel.Override("Pomelo.EntityFrameworkCore.MySql", LogEventLevel.Fatal)
             .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Fatal)
             .MinimumLevel.Debug()
