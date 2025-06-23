@@ -12,18 +12,47 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GenX.Server.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20241025202418_DbUser")]
-    partial class DbUser
+    [Migration("20250622202024_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("ProductVersion", "9.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
+
+            modelBuilder.Entity("GenX.Server.Database.DbFriend", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("FriendID")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsAccepted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime>("RequestedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("FriendID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("DbFriend");
+                });
 
             modelBuilder.Entity("GenX.Server.Database.DbUser", b =>
                 {
@@ -77,6 +106,30 @@ namespace GenX.Server.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("DbUser");
+                });
+
+            modelBuilder.Entity("GenX.Server.Database.DbFriend", b =>
+                {
+                    b.HasOne("GenX.Server.Database.DbUser", "FriendUser")
+                        .WithMany()
+                        .HasForeignKey("FriendID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GenX.Server.Database.DbUser", "User")
+                        .WithMany("Friends")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FriendUser");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("GenX.Server.Database.DbUser", b =>
+                {
+                    b.Navigation("Friends");
                 });
 #pragma warning restore 612, 618
         }

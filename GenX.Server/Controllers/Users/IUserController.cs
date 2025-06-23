@@ -1,19 +1,11 @@
-﻿using GenX.Network.Packets.FriendsDatas;
-using GenX.Network.Packets.Login;
-using GenX.Network.Packets.Logout;
-using GenX.Network.Packets.UserDatas;
+﻿using GenX.Network.Packets.Login;
 using GenX.Server.Database;
-using Network;
 
 namespace GenX.Server.Controllers.Users;
 
 public interface IUserController
 {
-    void TryToLogInUser(LoginRequest request, Connection client);
+    Task<(LoginResult loginResult, DbUser? user)> LogInUserAsync(string login, string? password);
 
-    void TryToLogOutUser(LogoutRequest request, DbUser user);
-
-    void SendUserDatas(UserDatasRequest request, Connection client);
-
-    void SendFriendsDatas(FriendsDatasRequest request, Connection client);
+    Task LogOutUserAsync(DbUser user);
 }

@@ -36,4 +36,8 @@ public class DbUser
     public DateTime LastLoginTime { get; set; }
 
     public DateTime CreationDate { get; init; }
+
+    public List<DbFriend> Friends { get; set; } = [];
+
+    public List<DbFriend> FriendOf { get; set; } = [];
 }

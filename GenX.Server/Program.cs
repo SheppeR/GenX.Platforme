@@ -1,5 +1,6 @@
 ﻿using GenX.Common.Extensions;
 using GenX.Common.Helpers.Logger;
+using GenX.Server.Controllers.Friends;
 using GenX.Server.Controllers.Users;
 using GenX.Server.Database;
 using GenX.Server.Network;
@@ -37,10 +38,11 @@ public static class Program
                     options.UseMySql(context.Configuration.GetConnectionString("DefaultConnection"),
                         ServerVersion.AutoDetect(context.Configuration.GetConnectionString("DefaultConnection"))));
 
-                services.AddSingleton<IUserController, UserController>();
+                services.AddScoped<IUserController, UserController>();
+                services.AddScoped<IFriendController, FriendController>();
 
-                services.AddSingleton<IHostedService, GenXServerService>();
-                services.AddSingleton<IGenXServer, GenXServer>();
+                services.AddScoped<IHostedService, GenXServerService>();
+                services.AddScoped<IGenXServer, GenXServer>();
             }).ConfigureLogging(builder =>
             {
                 builder.AddFilter("Microsoft", LogLevel.Warning);

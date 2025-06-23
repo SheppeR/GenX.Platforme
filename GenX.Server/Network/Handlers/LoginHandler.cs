@@ -6,11 +6,16 @@ using Sylver.HandlerInvoker.Attributes;
 namespace GenX.Server.Network.Handlers;
 
 [Handler]
-public class LoginHandler(IUserController userController)
+public class LoginHandler(IUserController userController, IGenXServer server)
 {
     [HandlerAction(typeof(LoginRequest))]
-    public void OnHandle(LoginRequest request, Connection client)
+    public async void OnHandle(LoginRequest request, Connection client)
     {
-        userController.TryToLogInUser(request, client);
+        var datas = await userController.LogInUserAsync(request.Login, request.PasswordHash);
+
+        if (datas.user != null) server[client] = datas.user;
+
+
+        client.Send(new LoginResponse(datas.loginResult, request));
     }
 }

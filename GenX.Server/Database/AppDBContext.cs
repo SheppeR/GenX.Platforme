@@ -12,6 +12,8 @@ public class AppDBContext(DbContextOptions<AppDBContext> options, IConfiguration
 {
     public DbSet<DbUser> DbUser { get; set; }
 
+    public DbSet<DbFriend> DbFriend { get; set; }
+
     public async Task Migrate()
     {
         Log.Debug("Checking migration for the database ...");
@@ -36,6 +38,11 @@ public class AppDBContext(DbContextOptions<AppDBContext> options, IConfiguration
         }
 
         return true;
+    }
+
+    public new async Task<int> SaveChanges()
+    {
+        return await SaveChangesAsync();
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -64,5 +71,17 @@ public class AppDBContext(DbContextOptions<AppDBContext> options, IConfiguration
             entity.Property(e => e.Email).IsRequired();
             entity.Property(e => e.Pseudo).IsRequired();
         });
+
+        modelBuilder.Entity<DbFriend>()
+            .HasOne(f => f.User)
+            .WithMany(u => u.Friends)
+            .HasForeignKey(f => f.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<DbFriend>()
+            .HasOne(f => f.Friend)
+            .WithMany(u => u.FriendOf)
+            .HasForeignKey(f => f.FriendId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

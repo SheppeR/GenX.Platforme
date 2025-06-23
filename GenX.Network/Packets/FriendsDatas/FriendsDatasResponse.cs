@@ -4,4 +4,9 @@ using Network.Packets;
 namespace GenX.Network.Packets.FriendsDatas;
 
 [PacketRequest(typeof(FriendsDatasRequest))]
-public class FriendsDatasResponse(RequestPacket request) : ResponsePacket(request);
+public class FriendsDatasResponse(RequestPacket request) : ResponsePacket(request)
+{
+    public List<FriendDatas>? FriendsData { get; set; }
+
+    public List<FriendDatas>? FriendsPendingData { get; set; }
+}

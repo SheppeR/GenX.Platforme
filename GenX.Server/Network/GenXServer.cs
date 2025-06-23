@@ -17,13 +17,11 @@ public class GenXServer : IGenXServer
     private readonly Dictionary<Connection, DbUser> _connections;
     private readonly ServerConnectionContainer _container;
     private readonly IHandlerInvoker _handlerInvoker;
-    private readonly IServiceProvider _serviceProvider;
 
-    public GenXServer(IHandlerInvoker handlerInvoker, IServiceProvider serviceProvider,
+    public GenXServer(IHandlerInvoker handlerInvoker,
         IWritableOptions<ServerInfos> configuration)
     {
         _handlerInvoker = handlerInvoker;
-        _serviceProvider = serviceProvider;
         _connections = new Dictionary<Connection, DbUser>();
 
         _container = ConnectionFactory.CreateServerConnectionContainer(configuration.Value.Port, false);
