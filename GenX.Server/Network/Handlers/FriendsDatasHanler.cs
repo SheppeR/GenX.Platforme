@@ -1,32 +1,26 @@
 ﻿using GenX.Network.Packets.FriendsDatas;
 using GenX.Server.Controllers.Friends;
+using GenX.Server.Database;
 using Network;
 using Sylver.HandlerInvoker.Attributes;
 
 namespace GenX.Server.Network.Handlers;
 
 [Handler]
-public class FriendsDatasHanler(IFriendController friendController, IGenXServer server)
+public class FriendsDatasHanler(IFriendController friendController)
 {
     [HandlerAction(typeof(FriendsDatasRequest))]
-    public async void OnHandle(FriendsDatasRequest request, Connection client)
+    public async void OnHandle(FriendsDatasRequest request, Connection client, DbUser user)
     {
-        var friends = await friendController.GetFriendsAsync(server[client].ID);
-        var friendsPending = await friendController.GetPendingFriendRequestsAsync(server[client].ID);
+        var friends = await friendController.GetFriendsAsync(user.ID);
 
         var rep = new FriendsDatasResponse(request)
         {
             FriendsData = friends.Select(f => new FriendDatas
             {
-                ID = f.ID,
-                Pseudo = f.Pseudo,
-                Status = f.Status
-            }).ToList(),
-            FriendsPendingData = friendsPending.Select(f => new FriendDatas
-            {
-                ID = f.ID,
-                Pseudo = f.Pseudo,
-                Status = f.Status
+                ID = f.Friend.ID,
+                Pseudo = f.Friend.Pseudo,
+                Status = f.Friend.Status, Avatar = "https://genx.example.com/avatars/", IsAccepted = f.IsAccepted
             }).ToList()
         };
 

@@ -19,6 +19,7 @@
                     RequestedTheme="Dark" />
                 <ui:XamlControlsResources />
                 <ResourceDictionary Source="/GenX.Common;component/Helpers/Converters/Converters.xaml" />
+                <ResourceDictionary Source="NotifyIconResources.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <viewModels:ViewModelLocator x:Key="Locator" d:IsDataSource="True" />
 

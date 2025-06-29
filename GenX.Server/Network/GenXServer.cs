@@ -65,13 +65,20 @@ public class GenXServer : IGenXServer
         connection.RegisterStaticPacketHandler<LogoutRequest>(OnReceive);
         connection.RegisterStaticPacketHandler<UserDatasRequest>(OnReceive);
         connection.RegisterStaticPacketHandler<FriendsDatasRequest>(OnReceive);
+        connection.RegisterStaticPacketHandler<AcceptFriendRequest>(OnReceive);
+        connection.RegisterStaticPacketHandler<DenyFriendRequest>(OnReceive);
     }
 
     private void OnReceive<T>(T packet, Connection connection)
     {
         try
         {
-            _handlerInvoker.Invoke(packet?.GetType(), packet, connection);
+            var packetType = packet?.GetType();
+
+            if (packetType == typeof(LoginRequest) || packetType == typeof(LogoutRequest))
+                _handlerInvoker.Invoke(packetType, packet, connection, null);
+            else
+                _handlerInvoker.Invoke(packetType, packet, connection, this[connection]);
         }
         catch (Exception)
         {

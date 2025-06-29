@@ -7,5 +7,5 @@ public interface IUserController
 {
     Task<(LoginResult loginResult, DbUser? user)> LogInUserAsync(string login, string? password);
 
-    Task LogOutUserAsync(DbUser user);
+    Task<bool> LogOutUserAsync(DbUser? user);
 }

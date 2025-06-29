@@ -18,21 +18,31 @@ public class UserController(IAppDBContext appDbContext) : IUserController
         else
         {
             if (!user.PasswordHash!.ToUpperInvariant().Equals(password?.ToUpperInvariant()))
-            {
                 loginResult = LoginResult.LoginFail;
-            }
             else
-            {
                 loginResult = user.IsBanned ? LoginResult.AccountBanned : LoginResult.LoginSuccess;
-            }
         }
 
-        //TODO BROADCAST TO ALL FRIENDS USER STATUS
+        if (loginResult == LoginResult.LoginSuccess && user != null)
+        {
+            user.LastLoginTime = DateTime.UtcNow;
+            user.Status = 1;
+            appDbContext.SaveChanges();
+        }
+
         return Task.FromResult((loginResult, user));
     }
 
-    public Task LogOutUserAsync(DbUser user)
+    public async Task<bool> LogOutUserAsync(DbUser? user)
     {
-        return null!;
+        if (user != null)
+        {
+            user.LastLogoutTime = DateTime.UtcNow;
+            user.OnlineTime += (DateTime.UtcNow - user.LastLoginTime).TotalSeconds;
+            user.Status = 0;
+            await appDbContext.SaveChanges();
+        }
+
+        return true;
     }
 }

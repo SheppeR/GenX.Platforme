@@ -21,7 +21,10 @@ public class GenXClient : IGenXClient
     {
         _handlerInvoker = handlerInvoker;
 
-        _container = ConnectionFactory.CreateClientConnectionContainer(serverInfos.Value.Host, serverInfos.Value.Port);
+        _container =
+            ConnectionFactory.CreateClientConnectionContainer(serverInfos.Value.Host, serverInfos.Value.Port);
+        _container.AutoReconnect = true;
+        _container.ReconnectInterval = 5000;
         _container.ConnectionLost += OnConnectionLost;
         _container.ConnectionEstablished += OnConnectionEstablished;
     }
@@ -49,6 +52,11 @@ public class GenXClient : IGenXClient
     {
         Log.Debug($"Client connected to: {connection.IPRemoteEndPoint}	|	Connection Type: {connectionType}");
 
+        RegisterPacketHandlers(connection);
+    }
+
+    private void RegisterPacketHandlers(Connection connection)
+    {
         //TODO REGISTER PACKET
         connection.RegisterStaticPacketHandler<LoginResponse>(OnReceive);
         connection.RegisterStaticPacketHandler<LogoutResponse>(OnReceive);

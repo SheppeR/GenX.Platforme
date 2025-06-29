@@ -4,5 +4,9 @@
     xmlns:converters="clr-namespace:GenX.Common.Helpers.Converters">
 
     <converters:EmptyStringToBooleanConverter x:Key="EmptyStringToBooleanConverter" />
+    <converters:StatusToBrushConverter x:Key="StatusToBrushConverter" />
+    <converters:StatusToStringConverter x:Key="StatusToStringConverter" />
+    <converters:NullOrEmptyToVisibilityConverter x:Key="NullOrEmptyToVisibilityConverter" />
+    <converters:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter" />
 
 </ResourceDictionary>

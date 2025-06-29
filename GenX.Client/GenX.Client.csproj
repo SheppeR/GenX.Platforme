@@ -11,6 +11,8 @@
 
 	<ItemGroup>
 		<None Remove="Assets\bg.jpg" />
+		<None Remove="Assets\default_avatar.png" />
+		<None Remove="Assets\logo.ico" />
 		<None Remove="Assets\logo.png" />
 	</ItemGroup>
 
@@ -19,6 +21,7 @@
 		<PackageReference Include="CodingSeb.Localization.JsonFileLoader" Version="1.4.0" />
 		<PackageReference Include="CodingSeb.Localization.WPF" Version="1.4.1" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+		<PackageReference Include="H.NotifyIcon.Wpf" Version="2.3.0" />
 		<PackageReference Include="iNKORE.UI.WPF.Modern" Version="0.10.0" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.6" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.6" />
@@ -59,6 +62,8 @@
 
 	<ItemGroup>
 		<Resource Include="Assets\bg.jpg" />
+		<Resource Include="Assets\default_avatar.png" />
+		<Resource Include="Assets\logo.ico" />
 		<Resource Include="Assets\logo.png" />
 	</ItemGroup>
 
@@ -68,6 +73,10 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Settings.settings</DependentUpon>
 		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Network\Handlers\" />
 	</ItemGroup>
 
 </Project>

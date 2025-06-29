@@ -7,6 +7,4 @@ namespace GenX.Network.Packets.FriendsDatas;
 public class FriendsDatasResponse(RequestPacket request) : ResponsePacket(request)
 {
     public List<FriendDatas>? FriendsData { get; set; }
-
-    public List<FriendDatas>? FriendsPendingData { get; set; }
 }

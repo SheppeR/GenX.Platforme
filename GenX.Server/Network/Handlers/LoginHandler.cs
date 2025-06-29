@@ -15,7 +15,7 @@ public class LoginHandler(IUserController userController, IGenXServer server)
 
         if (datas.user != null) server[client] = datas.user;
 
-
+        //TODO BROADCAST TO ALL FRIENDS USER STATUS
         client.Send(new LoginResponse(datas.loginResult, request));
     }
 }

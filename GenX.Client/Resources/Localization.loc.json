@@ -1,70 +1,102 @@
 {
-  "LanguageName": {
-    "en": "English",
-    "fr": "Français"
-  },
-  "TitleAppName": {
-    "en": "GenX",
-    "fr": "GenX"
-  },
-  "LoginButton": {
-    "en": "Login",
-    "fr": "Connexion"
-  },
-  "PasswordPlaceholder": {
-    "en": "Password",
-    "fr": "Mot de passe"
-  },
-  "AccountPlaceholder": {
-    "en": "Account",
-    "fr": "Nom de compte"
-  },
-  "SaveInformationCheckbox": {
-    "en": "Save connection informations",
-    "fr": "Sauvegarder mes informations de connexion"
-  },
-  "SignupTextblock": {
-    "en": "Not a member?",
-    "fr": "Pas de compte?"
-  },
-  "SignupLink": {
-    "en": "SignUp",
-    "fr": "Créer un compte"
-  },
-  "PassworrLostLink": {
-    "en": "Forgot your password?",
-    "fr": "Mot de passe oublié?"
-  },
-  "ErrorLoginTitle": {
-    "en": "Login Error",
-    "fr": "Erreur de connexion"
-  },
-  "ErrorLoginFail": {
-    "en": "Wrong password for this account!",
-    "fr": "Mauvais mot de passe pour ce comtpe!"
-  },
-  "ErrorLoginBanned": {
-    "en": "This account is banned!",
-    "fr": "Ce compte est banni!"
-  },
-  "ErrorLoginNotFound": {
-    "en": "This account does not exist!",
-    "fr": "Ce compte n'existe pas!"
-  },
-  "ErrorLoginUnk": {
-    "en": "An error just happeened, please contact the support for more information!",
-    "fr": "Une érreur s'est produite, veuillez contactez le support pour plus d'informatioin!"
-  },
-  "HomeMenu": {
-    "en": "Home",
-    "fr": "Accueil"
-  },
-  "AppsMenu": {
-    "en": "Apps",
-    "fr": "Application"
-  },
-  "SettingsMenu": {
-    "en": "Settings",
-    "fr": "Options"
-  }
+    "LanguageName": {
+        "en": "English",
+        "fr": "Français"
+    },
+    "TitleAppName": {
+        "en": "GenX",
+        "fr": "GenX"
+    },
+    "LoginButton": {
+        "en": "Login",
+        "fr": "Connexion"
+    },
+    "PasswordPlaceholder": {
+        "en": "Password",
+        "fr": "Mot de passe"
+    },
+    "AccountPlaceholder": {
+        "en": "Account",
+        "fr": "Nom de compte"
+    },
+    "SaveInformationCheckbox": {
+        "en": "Save connection informations",
+        "fr": "Sauvegarder mes informations de connexion"
+    },
+    "SignupTextblock": {
+        "en": "Not a member?",
+        "fr": "Pas de compte?"
+    },
+    "SignupLink": {
+        "en": "SignUp",
+        "fr": "Créer un compte"
+    },
+    "PassworrLostLink": {
+        "en": "Forgot your password?",
+        "fr": "Mot de passe oublié?"
+    },
+    "ErrorLoginTitle": {
+        "en": "Login Error",
+        "fr": "Erreur de connexion"
+    },
+    "ErrorLoginFail": {
+        "en": "Wrong password for this account!",
+        "fr": "Mauvais mot de passe pour ce comtpe!"
+    },
+    "ErrorLoginBanned": {
+        "en": "This account is banned!",
+        "fr": "Ce compte est banni!"
+    },
+    "ErrorLoginNotFound": {
+        "en": "This account does not exist!",
+        "fr": "Ce compte n'existe pas!"
+    },
+    "ErrorLoginUnk": {
+        "en": "An error just happeened, please contact the support for more information!",
+        "fr": "Une érreur s'est produite, veuillez contactez le support pour plus d'informatioin!"
+    },
+    "HomeMenu": {
+        "en": "Home",
+        "fr": "Accueil"
+    },
+    "AppsMenu": {
+        "en": "Apps",
+        "fr": "Application"
+    },
+    "SettingsMenu": {
+        "en": "Settings",
+        "fr": "Options"
+    },
+    "ApplicationName": {
+        "en": "GenX.Project",
+        "fr": "GenX.Project"
+    },
+    "ExitMenu": {
+        "en": "Exit",
+        "fr": "Quitter"
+    },
+    "LoadingAccount": {
+        "en": "Loading account infos ...",
+        "fr": "Chargement des infos du compte ..."
+    },
+    "FriendsMenu": {
+        "en": "Friends",
+        "fr": "Amis"
+    },
+    "Offline": {
+        "en": "Offline",
+        "fr": "Hors Ligne"
+    },
+    "Online": {
+        "en": "Online",
+        "fr": "En Ligne"
+    },
+    "Busy": {
+        "en": "Busy",
+        "fr": "Occupé"
+    },
+    "Event": {
+        "en": "Event",
+        "fr": "Event"
+    }
 }

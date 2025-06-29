@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Collections\" />
+    <ProjectReference Include="..\GenX.Network\GenX.Network.csproj" />
   </ItemGroup>
 
 </Project>

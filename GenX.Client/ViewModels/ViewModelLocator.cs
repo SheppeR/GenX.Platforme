@@ -9,4 +9,8 @@ public class ViewModelLocator
     public LoginWindowViewModel LoginWindow => App.GetRequiredService<LoginWindowViewModel>();
 
     public LoadingWindowViewModel LoadingWindow => App.GetRequiredService<LoadingWindowViewModel>();
+
+    public NotifyIconViewModel NotifyIcon => App.GetRequiredService<NotifyIconViewModel>();
+
+    public FriendsWindowViewModel FriendsWindow => App.GetRequiredService<FriendsWindowViewModel>();
 }

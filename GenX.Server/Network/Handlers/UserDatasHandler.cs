@@ -1,26 +1,27 @@
 ﻿using System.Globalization;
 using GenX.Network.Packets.UserDatas;
+using GenX.Server.Database;
 using Network;
 using Sylver.HandlerInvoker.Attributes;
 
 namespace GenX.Server.Network.Handlers;
 
 [Handler]
-public class UserDatasHandler(IGenXServer server)
+public class UserDatasHandler
 {
     [HandlerAction(typeof(UserDatasRequest))]
-    public void OnHandle(UserDatasRequest request, Connection client)
+    public void OnHandle(UserDatasRequest request, Connection client, DbUser user)
     {
         var rep = new UserDatasResponse(request)
         {
-            UserID = server[client].ID,
-            Access = server[client].Access,
-            CreationDate = server[client].CreationDate.ToString(CultureInfo.CurrentCulture),
-            LastLoginTime = server[client].LastLoginTime.ToString(CultureInfo.CurrentCulture),
-            LastLogoutTime = server[client].LastLogoutTime.ToString(CultureInfo.CurrentCulture),
-            OnlineTime = server[client].OnlineTime,
-            Pseudo = server[client].Pseudo,
-            Status = server[client].Status
+            UserID = user.ID,
+            Access = user.Access,
+            CreationDate = user.CreationDate.ToString(CultureInfo.CurrentCulture),
+            LastLoginTime = user.LastLoginTime.ToString(CultureInfo.CurrentCulture),
+            LastLogoutTime = user.LastLogoutTime.ToString(CultureInfo.CurrentCulture),
+            OnlineTime = user.OnlineTime,
+            Pseudo = user.Pseudo,
+            Status = user.Status
         };
 
         client.Send(rep);

@@ -1,0 +1,90 @@
+﻿<Window
+    x:Class="GenX.Client.View.FriendsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    Width="400"
+    Height="650"
+    MaxWidth="400"
+    ui:ThemeManager.IsThemeAware="True"
+    ui:TitleBar.Height="36"
+    ui:WindowHelper.ApplyNoise="True"
+    ui:WindowHelper.CornerStyle="DoNotRound"
+    ui:WindowHelper.SystemBackdropType="Acrylic11"
+    ui:WindowHelper.UseModernWindowStyle="True"
+    DataContext="{Binding FriendsWindow, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+
+    <ui:ScrollViewerEx AutoHideScrollBars="True" VerticalScrollBarVisibility="Auto">
+        <ui:ListView
+            Margin="5,5,15,5"
+            ItemsSource="{Binding Friends}"
+            PreviewMouseWheel="OnPreviewMouseWheel"
+            SelectionMode="Single">
+
+
+            <ui:ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="55" Margin="0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image
+                            Grid.Column="0"
+                            Width="50"
+                            Height="50"
+                            Margin="0,0,10,0"
+                            Source="{Binding Avatar, TargetNullValue='pack://application:,,,/Assets/default_avatar.png'}" />
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock
+                                FontWeight="Bold"
+                                Foreground="{Binding Status, Converter={StaticResource StatusToBrushConverter}}"
+                                Text="{Binding Pseudo}" />
+                            <TextBlock
+                                FontSize="12"
+                                Foreground="{Binding Status, Converter={StaticResource StatusToBrushConverter}}"
+                                Text="{Binding Status, Converter={StaticResource StatusToStringConverter}}" />
+                            <TextBlock
+                                FontSize="12"
+                                Foreground="{Binding Status, Converter={StaticResource StatusToBrushConverter}}"
+                                Text="{Binding Event}"
+                                Visibility="{Binding Event, Converter={StaticResource NullOrEmptyToVisibilityConverter}}" />
+                        </StackPanel>
+
+                        <StackPanel
+                            Grid.Column="2"
+                            Margin="5,0,0,0"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal"
+                            Visibility="{Binding IsAccepted, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                            <ui:AppBarButton
+                                Width="40"
+                                Height="50"
+                                Command="{Binding DataContext.AcceptFriendCommand, RelativeSource={RelativeSource AncestorType={x:Type ui:ListView}}}"
+                                CommandParameter="{Binding ID}">
+                                <ui:AppBarButton.Icon>
+                                    <ui:FontIcon Foreground="GreenYellow"
+                                                 Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" />
+                                </ui:AppBarButton.Icon>
+                            </ui:AppBarButton>
+                            <ui:AppBarButton
+                                Width="40"
+                                Height="50"
+                                Command="{Binding DataContext.DenyFriendCommand, RelativeSource={RelativeSource AncestorType={x:Type ui:ListView}}}"
+                                CommandParameter="{Binding ID}">
+                                <ui:AppBarButton.Icon>
+                                    <ui:FontIcon Foreground="Red" Icon="{x:Static ui:SegoeFluentIcons.Clear}" />
+                                </ui:AppBarButton.Icon>
+                            </ui:AppBarButton>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ui:ListView.ItemTemplate>
+        </ui:ListView>
+    </ui:ScrollViewerEx>
+</Window>
