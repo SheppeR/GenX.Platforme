@@ -18,8 +18,12 @@ public static class ServiceCollectionExtensions
             var environment = provider.GetService<IHostEnvironment>();
             var options = provider.GetService<IOptionsMonitor<T>>();
             if (environment != null)
+            {
                 if (options != null)
+                {
                     return new WritableOptions<T>(environment, options, section.Key, file);
+                }
+            }
 
             return null!;
         });

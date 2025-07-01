@@ -19,7 +19,10 @@ public partial class MainWindow
         {
             var pagePath = $"/Pages/{item.Tag}.xaml";
 
-            if (!string.IsNullOrEmpty(pagePath)) ContentFrame.Source = new Uri(pagePath, UriKind.Relative);
+            if (!string.IsNullOrEmpty(pagePath))
+            {
+                ContentFrame.Source = new Uri(pagePath, UriKind.Relative);
+            }
         }
     }
 
@@ -35,21 +38,27 @@ public partial class MainWindow
     private void OnNavigated(object sender, NavigationEventArgs e)
     {
         if (e.Uri == null)
+        {
             return;
+        }
 
         var pageName = Path.GetFileNameWithoutExtension(e.Uri.ToString());
         foreach (var menuItem in NavigationView.MenuItems.OfType<NavigationViewItem>())
+        {
             if ((string)menuItem.Tag == pageName)
             {
                 NavigationView.SelectedItem = menuItem;
                 break;
             }
+        }
 
         foreach (var footerItem in NavigationView.FooterMenuItems.OfType<NavigationViewItem>())
+        {
             if ((string)footerItem.Tag == pageName)
             {
                 NavigationView.SelectedItem = footerItem;
                 break;
             }
+        }
     }
 }

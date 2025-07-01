@@ -24,7 +24,10 @@ public partial class NotifyIconViewModel(IGenXClient client, MainWindow mainWind
         }
         else
         {
-            if (_mainWindow.WindowState == WindowState.Minimized) _mainWindow.WindowState = WindowState.Normal;
+            if (_mainWindow.WindowState == WindowState.Minimized)
+            {
+                _mainWindow.WindowState = WindowState.Normal;
+            }
 
             _mainWindow.Activate();
         }
@@ -40,7 +43,10 @@ public partial class NotifyIconViewModel(IGenXClient client, MainWindow mainWind
         }
         else
         {
-            if (_friendsWindow.WindowState == WindowState.Minimized) _friendsWindow.WindowState = WindowState.Normal;
+            if (_friendsWindow.WindowState == WindowState.Minimized)
+            {
+                _friendsWindow.WindowState = WindowState.Normal;
+            }
 
             _friendsWindow.Activate();
         }
@@ -50,7 +56,11 @@ public partial class NotifyIconViewModel(IGenXClient client, MainWindow mainWind
     public async Task ExitApplication()
     {
         var datas = await client.SendAndReceive<LogoutResponse>(new LogoutRequest());
-        while (!datas.Success) await Task.Delay(10);
+        while (!datas.Success)
+        {
+            await Task.Delay(10);
+        }
+
         await client.Disconnect(CloseReason.ClientClosed);
         Application.Current.Shutdown(0);
     }

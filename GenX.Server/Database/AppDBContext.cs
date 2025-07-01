@@ -48,6 +48,7 @@ public class AppDBContext(DbContextOptions<AppDBContext> options, IConfiguration
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)
+        {
             try
             {
                 var connectionString = configuration.GetConnectionString("DefaultConnection");
@@ -57,6 +58,7 @@ public class AppDBContext(DbContextOptions<AppDBContext> options, IConfiguration
             {
                 Log.Error($"Cannot start server because of mysql exception: {Environment.NewLine}{e.InnerException}");
             }
+        }
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

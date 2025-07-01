@@ -18,9 +18,13 @@ public class UserController(IAppDBContext appDbContext) : IUserController
         else
         {
             if (!user.PasswordHash!.ToUpperInvariant().Equals(password?.ToUpperInvariant()))
+            {
                 loginResult = LoginResult.LoginFail;
+            }
             else
+            {
                 loginResult = user.IsBanned ? LoginResult.AccountBanned : LoginResult.LoginSuccess;
+            }
         }
 
         if (loginResult == LoginResult.LoginSuccess && user != null)

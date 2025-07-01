@@ -16,7 +16,10 @@ public partial class LoginWindow
 
     private void OnLoaded(object sender, RoutedEventArgs e)
     {
-        if (!string.IsNullOrEmpty(_model.PasswordText)) Password.Password = _model.PasswordText;
+        if (!string.IsNullOrEmpty(_model.PasswordText))
+        {
+            Password.Password = _model.PasswordText;
+        }
     }
 
     private void OnInfoBarClosing(InfoBar sender, InfoBarClosingEventArgs args)

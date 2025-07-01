@@ -29,6 +29,9 @@ public partial class FriendsWindowViewModel(IGenXClient client) : ObservableReci
         var rep = await client.SendAndReceive<DenyFriendResponse>(new DenyFriendRequest(id));
         var friend = Friends.FirstOrDefault(f => f.ID.Equals(rep.FriendID));
 
-        if (friend != null) Friends.Remove(friend);
+        if (friend != null)
+        {
+            Friends.Remove(friend);
+        }
     }
 }

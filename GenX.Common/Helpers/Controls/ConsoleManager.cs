@@ -22,7 +22,10 @@ public static class ConsoleManager
 
     public static void Show()
     {
-        if (!HasConsole) AllocConsole();
+        if (!HasConsole)
+        {
+            AllocConsole();
+        }
     }
 
     public static void Hide()
@@ -37,9 +40,13 @@ public static class ConsoleManager
     public static void Toggle()
     {
         if (HasConsole)
+        {
             Hide();
+        }
         else
+        {
             Show();
+        }
     }
 
     private static void SetOutAndErrorNull()

@@ -9,7 +9,9 @@ public static class MD5Extentions
     public static bool IsMD5(this string? input)
     {
         if (string.IsNullOrEmpty(input) || input.Length != 32)
+        {
             return false;
+        }
 
         return Regex.IsMatch(input, "^[0-9a-fA-F]{32}$");
     }

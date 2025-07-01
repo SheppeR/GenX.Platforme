@@ -1,15 +1,18 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 using GenX.Client.Network;
 using GenX.Client.Options;
 using GenX.Client.Properties;
 using GenX.Client.View;
 using GenX.Client.ViewModels;
+using GenX.Client.ViewModels.Content;
 using GenX.Client.ViewModels.Windows;
 using GenX.Common.Extensions;
 using GenX.Common.Helpers.Controls;
 using GenX.Common.Helpers.Localizer;
 using GenX.Common.Helpers.Logger;
 using H.NotifyIcon;
+using iNKORE.UI.WPF.Modern;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -39,6 +42,8 @@ public partial class App
                 _ = services.AddTransient<FriendsWindow>();
                 _ = services.AddSingleton<FriendsWindowViewModel>();
 
+                _ = services.AddSingleton<SettingsThemeContentViewModel>();
+
                 /*_ = services.AddSingleton<ISnackbarService, SnackbarService>();
                 _ = services.AddSingleton<IContentDialogService, ContentDialogService>();*/
 
@@ -59,54 +64,96 @@ public partial class App
 
     protected override async void OnStartup(StartupEventArgs e)
     {
-        ConsoleManager.Show();
-
-        if (e.Args.Length != 0)
-            foreach (var arg in e.Args)
-                switch (arg)
-                {
-                    case "-offline":
-                        IsOffline = true;
-                        break;
-                    default:
-                        IsOffline = false;
-                        break;
-                }
-
-        await _host.StartAsync();
-
-        if (IsOffline)
+        try
         {
-            var _window = _host.Services.GetRequiredService<MainWindow>();
-            _window.Show();
-        }
-        else
-        {
-            var isConnected = await _host.Services.GetRequiredService<IGenXClient>().IsConnected;
-            //TODO HANDLE SERVER DOWN
-            while (!isConnected)
+            ConsoleManager.Show();
+
+            if (e.Args.Length != 0)
             {
-                isConnected = await _host.Services.GetRequiredService<IGenXClient>().IsConnected;
-                await Task.Delay(1);
+                foreach (var arg in e.Args)
+                {
+                    switch (arg)
+                    {
+                        case "-offline":
+                            IsOffline = true;
+                            break;
+                        default:
+                            IsOffline = false;
+                            break;
+                    }
+                }
             }
 
-            var _window = _host.Services.GetRequiredService<LoginWindow>();
-            _window.Show();
+            await LoadTheme();
+
+            await _host.StartAsync();
+
+            if (IsOffline)
+            {
+                var _window = _host.Services.GetRequiredService<MainWindow>();
+                _window.Show();
+            }
+            else
+            {
+                var isConnected = await _host.Services.GetRequiredService<IGenXClient>().IsConnected;
+                //TODO HANDLE SERVER DOWN
+                while (!isConnected)
+                {
+                    isConnected = await _host.Services.GetRequiredService<IGenXClient>().IsConnected;
+                    await Task.Delay(1);
+                }
+
+                var _window = _host.Services.GetRequiredService<LoginWindow>();
+                _window.Show();
+            }
+
+            notifyIcon = FindResource("NotifyIcon") as TaskbarIcon;
+            notifyIcon?.ForceCreate();
+
+            base.OnStartup(e);
+        }
+        catch (Exception ex)
+        {
+            Log.Error("Exception {ExMessage}", ex.Message);
+        }
+    }
+
+    private Task LoadTheme()
+    {
+        var theme = Settings.Default.Theme;
+        var accent = Settings.Default.Accent;
+        if (theme != string.Empty)
+        {
+            ThemeManager.Current.ApplicationTheme = theme switch
+            {
+                "Dark" => ApplicationTheme.Dark,
+                "Light" => ApplicationTheme.Light,
+                _ => ThemeManager.Current.ApplicationTheme
+            };
         }
 
-        notifyIcon = FindResource("NotifyIcon") as TaskbarIcon;
-        notifyIcon?.ForceCreate();
+        if (accent != string.Empty)
+        {
+            ThemeManager.Current.AccentColor = (Color)ColorConverter.ConvertFromString(accent);
+        }
 
-        base.OnStartup(e);
+        return Task.CompletedTask;
     }
 
     protected override async void OnExit(ExitEventArgs e)
     {
-        await _host.StopAsync(TimeSpan.FromSeconds(5));
+        try
+        {
+            await _host.StopAsync(TimeSpan.FromSeconds(5));
 
-        notifyIcon?.Dispose();
+            notifyIcon?.Dispose();
 
-        base.OnExit(e);
+            base.OnExit(e);
+        }
+        catch (Exception ex)
+        {
+            Log.Error("Exception {ExMessage}", ex.Message);
+        }
     }
 
     public static T GetRequiredService<T>()

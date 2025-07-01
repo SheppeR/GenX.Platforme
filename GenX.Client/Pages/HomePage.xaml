@@ -11,6 +11,5 @@
 
     <Grid>
         <TextBlock Text="HOME" />
-        <Button Click="ButtonBase_OnClick" />
     </Grid>
 </Page>

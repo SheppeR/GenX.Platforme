@@ -85,9 +85,13 @@ public partial class LoginWindowViewModel(IGenXClient client, IServiceProvider s
         IsLoading = true;
 
         if (SaveLoginChecked)
+        {
             SaveCredentials(LoginText, PasswordText);
+        }
         else
+        {
             ClearCredentials();
+        }
 
         var rep = await client.SendAndReceive<LoginResponse>(new LoginRequest(LoginText, PasswordText.CreateMD5()));
         switch (rep.Result)
@@ -148,7 +152,9 @@ public partial class LoginWindowViewModel(IGenXClient client, IServiceProvider s
     private string EncryptPassword(string? password)
     {
         if (string.IsNullOrEmpty(password))
+        {
             return string.Empty;
+        }
 
         var passwordBytes = Encoding.UTF8.GetBytes(password);
         var encryptedBytes = ProtectedData.Protect(passwordBytes, null, DataProtectionScope.CurrentUser);
@@ -158,7 +164,9 @@ public partial class LoginWindowViewModel(IGenXClient client, IServiceProvider s
     private static string DecryptPassword(string encryptedPassword)
     {
         if (string.IsNullOrEmpty(encryptedPassword))
+        {
             return string.Empty;
+        }
 
         try
         {
@@ -177,9 +185,13 @@ public partial class LoginWindowViewModel(IGenXClient client, IServiceProvider s
         if (!string.IsNullOrEmpty(LoginText) && !string.IsNullOrEmpty(PasswordText))
         {
             if (PasswordText != null && LoginText.Length >= 6 && PasswordText.Length >= 6)
+            {
                 LoginButtonEnabled = true;
+            }
             else
+            {
                 LoginButtonEnabled = false;
+            }
         }
         else
         {

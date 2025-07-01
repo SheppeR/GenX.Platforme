@@ -13,7 +13,10 @@ public class LoginHandler(IUserController userController, IGenXServer server)
     {
         var datas = await userController.LogInUserAsync(request.Login, request.PasswordHash);
 
-        if (datas.user != null) server[client] = datas.user;
+        if (datas.user != null)
+        {
+            server[client] = datas.user;
+        }
 
         //TODO BROADCAST TO ALL FRIENDS USER STATUS
         client.Send(new LoginResponse(datas.loginResult, request));

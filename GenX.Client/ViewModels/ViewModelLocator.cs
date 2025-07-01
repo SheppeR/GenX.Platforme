@@ -1,4 +1,5 @@
-﻿using GenX.Client.ViewModels.Windows;
+﻿using GenX.Client.ViewModels.Content;
+using GenX.Client.ViewModels.Windows;
 
 namespace GenX.Client.ViewModels;
 
@@ -10,7 +11,10 @@ public class ViewModelLocator
 
     public LoadingWindowViewModel LoadingWindow => App.GetRequiredService<LoadingWindowViewModel>();
 
+    public FriendsWindowViewModel FriendsWindow => App.GetRequiredService<FriendsWindowViewModel>();
+
     public NotifyIconViewModel NotifyIcon => App.GetRequiredService<NotifyIconViewModel>();
 
-    public FriendsWindowViewModel FriendsWindow => App.GetRequiredService<FriendsWindowViewModel>();
+    public SettingsThemeContentViewModel SettingsThemeContent =>
+        App.GetRequiredService<SettingsThemeContentViewModel>();
 }

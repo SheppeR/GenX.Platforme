@@ -76,9 +76,13 @@ public class GenXServer : IGenXServer
             var packetType = packet?.GetType();
 
             if (packetType == typeof(LoginRequest) || packetType == typeof(LogoutRequest))
+            {
                 _handlerInvoker.Invoke(packetType, packet, connection, null);
+            }
             else
+            {
                 _handlerInvoker.Invoke(packetType, packet, connection, this[connection]);
+            }
         }
         catch (Exception)
         {

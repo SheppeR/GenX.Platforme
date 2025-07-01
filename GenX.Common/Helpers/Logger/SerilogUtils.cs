@@ -147,7 +147,10 @@ public class SerilogUtils
     {
         section = "-[ " + section + " ]";
 
-        while (section.Length < 79) section = "=" + section;
+        while (section.Length < 79)
+        {
+            section = "=" + section;
+        }
 
         Log.Verbose($"{section}");
     }

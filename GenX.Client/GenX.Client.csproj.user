@@ -18,10 +18,13 @@
     <Compile Update="Pages\AppsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\GamesPage.xaml.cs">
+    <Compile Update="Pages\HomePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\HomePage.xaml.cs">
+    <Compile Update="Pages\SettingsContent\SettingsOther.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\SettingsContent\SettingsTheme.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Pages\SettingsPage.xaml.cs">

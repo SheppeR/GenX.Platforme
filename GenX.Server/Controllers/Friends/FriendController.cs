@@ -34,14 +34,18 @@ public class FriendController(IAppDBContext appDbContext) : IFriendController
     public async Task<bool> AddFriendAsync(int fromUserId, int toUserId)
     {
         if (fromUserId == toUserId)
+        {
             return false;
+        }
 
         var exists = await appDbContext.DbFriend.AnyAsync(f =>
             (f.UserId == fromUserId && f.FriendId == toUserId) ||
             (f.UserId == toUserId && f.FriendId == fromUserId));
 
         if (exists)
+        {
             return false;
+        }
 
         appDbContext.DbFriend.Add(new DbFriend
         {
@@ -60,7 +64,9 @@ public class FriendController(IAppDBContext appDbContext) : IFriendController
             f.UserId == userId && f.FriendId == friendid && !f.IsAccepted);
 
         if (request == null)
+        {
             return false;
+        }
 
         request.IsAccepted = true;
         await appDbContext.SaveChanges();
@@ -72,7 +78,10 @@ public class FriendController(IAppDBContext appDbContext) : IFriendController
         var request = await appDbContext.DbFriend.FirstOrDefaultAsync(f =>
             f.UserId == userId && f.FriendId == friendid && !f.IsAccepted);
         if (request == null)
+        {
             return false;
+        }
+
         appDbContext.DbFriend.Remove(request);
         await appDbContext.SaveChanges();
 

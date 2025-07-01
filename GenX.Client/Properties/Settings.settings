@@ -27,10 +27,10 @@
       <Value Profile="(Default)">fr</Value>
     </Setting>
     <Setting Name="Width" Type="System.String" Scope="User">
-      <Value Profile="(Default)">750</Value>
+      <Value Profile="(Default)">1100</Value>
     </Setting>
     <Setting Name="Height" Type="System.String" Scope="User">
-      <Value Profile="(Default)">450</Value>
+      <Value Profile="(Default)">600</Value>
     </Setting>
     <Setting Name="Left" Type="System.String" Scope="User">
       <Value Profile="(Default)">100</Value>

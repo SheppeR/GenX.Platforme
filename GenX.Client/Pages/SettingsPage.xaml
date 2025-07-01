@@ -4,12 +4,25 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     Title="SettingsPage"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
 
     <Grid>
-        <TextBlock Text="SETINGS" />
+        <ui:NavigationView
+            x:Name="NavigationView"
+            IsBackButtonVisible="Collapsed"
+            IsTabStop="False"
+            PaneDisplayMode="Top"
+            SelectionChanged="OnSelectionChanged"
+            SelectionFollowsFocus="Enabled">
+            <ui:NavigationView.MenuItems>
+                <ui:NavigationViewItem Content="{Tr SettingsMenuTheme}" Tag="SettingsTheme" />
+                <ui:NavigationViewItem Content="{Tr SettingsMenuOther}" Tag="SettingsOther" />
+            </ui:NavigationView.MenuItems>
+            <ui:Frame x:Name="ContentFrame" Margin="0,20,0,0" />
+        </ui:NavigationView>
     </Grid>
 </Page>

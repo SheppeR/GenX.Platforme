@@ -4,9 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:GenX.Client.Properties"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    Width="800"
-    Height="450"
+    Width="{Binding Width, Mode=TwoWay, Source={x:Static p:Settings.Default}}"
+    Height="{Binding Height, Mode=TwoWay, Source={x:Static p:Settings.Default}}"
+    MinWidth="1100"
+    MinHeight="600"
     ui:ThemeManager.IsThemeAware="True"
     ui:TitleBar.BackRequested="OnTitleBarBackRequested"
     ui:TitleBar.Height="36"
@@ -18,7 +21,9 @@
     ui:WindowHelper.SystemBackdropType="Acrylic11"
     ui:WindowHelper.UseModernWindowStyle="True"
     DataContext="{Binding MainWindow, Source={StaticResource Locator}}"
+    Left="{Binding Left, Mode=TwoWay, Source={x:Static p:Settings.Default}}"
     ResizeMode="CanResizeWithGrip"
+    Top="{Binding Top, Mode=TwoWay, Source={x:Static p:Settings.Default}}"
     mc:Ignorable="d">
     <Grid>
         <ui:NavigationView
@@ -36,21 +41,15 @@
                 <Thickness x:Key="NavigationViewContentGridBorderThickness">0,0,0,0</Thickness>
             </FrameworkElement.Resources>
             <ui:NavigationView.MenuItems>
-                <ui:NavigationViewItem Content="Home" Tag="HomePage">
+                <ui:NavigationViewItem Content="{Tr MainMenuHome}" Tag="HomePage">
                     <ui:NavigationViewItem.Icon>
                         <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Home}" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
 
-                <ui:NavigationViewItem Content="Apps" Tag="AppsPage">
+                <ui:NavigationViewItem Content="{Tr MainMenuApps}" Tag="AppsPage">
                     <ui:NavigationViewItem.Icon>
                         <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.OEM}" />
-                    </ui:NavigationViewItem.Icon>
-                </ui:NavigationViewItem>
-
-                <ui:NavigationViewItem Content="Games" Tag="GamesPage">
-                    <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Game}" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
 
@@ -58,19 +57,22 @@
             </ui:NavigationView.MenuItems>
             <ui:NavigationView.FooterMenuItems>
 
-                <ui:NavigationViewItem Content="Settings" Tag="SettingsPage">
+                <ui:NavigationViewItem Content="{Tr MainMenuSettings}" Tag="SettingsPage">
                     <ui:NavigationViewItem.Icon>
                         <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Settings}" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
-                <ui:NavigationViewItem Content="About" Tag="AboutPage">
+                <ui:NavigationViewItem Content="{Tr MainMenuAbout}" Tag="AboutPage">
                     <ui:NavigationViewItem.Icon>
                         <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Info}" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
 
             </ui:NavigationView.FooterMenuItems>
-            <ui:Frame x:Name="ContentFrame" Navigated="OnNavigated" />
+            <ui:Frame
+                x:Name="ContentFrame"
+                Margin="20"
+                Navigated="OnNavigated" />
 
         </ui:NavigationView>
     </Grid>

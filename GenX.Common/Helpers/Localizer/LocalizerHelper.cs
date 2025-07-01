@@ -7,7 +7,10 @@ public class LocalizerHelper
 {
     public static void ConfigureLocalizer(string value)
     {
-        if (!string.IsNullOrEmpty(value)) Loc.Instance.CurrentLanguage = value;
+        if (!string.IsNullOrEmpty(value))
+        {
+            Loc.Instance.CurrentLanguage = value;
+        }
 
         LocalizationLoader.Instance.FileLanguageLoaders.Add(new JsonFileLoader());
 
