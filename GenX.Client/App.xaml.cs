@@ -1,11 +1,13 @@
 ﻿using System.Windows;
 using System.Windows.Media;
+using CommunityToolkit.Mvvm.Messaging;
 using GenX.Client.Network;
 using GenX.Client.Options;
 using GenX.Client.Properties;
 using GenX.Client.View;
 using GenX.Client.ViewModels;
 using GenX.Client.ViewModels.Content;
+using GenX.Client.ViewModels.User;
 using GenX.Client.ViewModels.Windows;
 using GenX.Common.Extensions;
 using GenX.Common.Helpers.Controls;
@@ -37,17 +39,14 @@ public partial class App
                 _ = services.AddSingleton<MainWindowViewModel>();
                 _ = services.AddSingleton<LoginWindow>();
                 _ = services.AddSingleton<LoginWindowViewModel>();
-                _ = services.AddSingleton<LoadingWindow>();
-                _ = services.AddSingleton<LoadingWindowViewModel>();
                 _ = services.AddTransient<FriendsWindow>();
                 _ = services.AddSingleton<FriendsWindowViewModel>();
 
                 _ = services.AddSingleton<SettingsThemeContentViewModel>();
 
-                /*_ = services.AddSingleton<ISnackbarService, SnackbarService>();
-                _ = services.AddSingleton<IContentDialogService, ContentDialogService>();*/
-
                 _ = services.AddSingleton<IGenXClient, GenXClient>();
+                _ = services.AddSingleton<UserViewModel>();
+                _ = services.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
             }
         ).UseSerilog()
         .Build();

@@ -74,7 +74,8 @@
             ui:ControlHelper.PlaceholderText="{Tr PasswordPlaceholder}">
             <b:Interaction.Triggers>
                 <b:EventTrigger EventName="PasswordChanged">
-                    <b:InvokeCommandAction Command="{Binding PasswordChangedCommand}" CommandParameter="{Binding ElementName=Password}" />
+                    <b:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
+                                           CommandParameter="{Binding ElementName=Password}" />
                 </b:EventTrigger>
             </b:Interaction.Triggers>
         </PasswordBox>

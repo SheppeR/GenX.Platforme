@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GenX.Server.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20250622202024_initial")]
-    partial class initial
+    [Migration("20250902190050_FixAddDefaultValuesToDbUser2")]
+    partial class FixAddDefaultValuesToDbUser2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.6")
+                .HasAnnotation("ProductVersion", "9.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
@@ -33,7 +33,7 @@ namespace GenX.Server.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int>("FriendID")
+                    b.Property<int>("FriendId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsAccepted")
@@ -42,14 +42,14 @@ namespace GenX.Server.Migrations
                     b.Property<DateTime>("RequestedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("UserID")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("FriendID");
+                    b.HasIndex("FriendId");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("UserId");
 
                     b.ToTable("DbFriend");
                 });
@@ -63,10 +63,14 @@ namespace GenX.Server.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<int>("Access")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime(6)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DATETIME")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -74,13 +78,19 @@ namespace GenX.Server.Migrations
                         .HasColumnType("VARCHAR");
 
                     b.Property<bool>("IsBanned")
-                        .HasColumnType("tinyint(1)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(false);
 
                     b.Property<DateTime>("LastLoginTime")
-                        .HasColumnType("datetime(6)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DATETIME")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<DateTime>("LastLogoutTime")
-                        .HasColumnType("datetime(6)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DATETIME")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<string>("Login")
                         .IsRequired()
@@ -88,7 +98,9 @@ namespace GenX.Server.Migrations
                         .HasColumnType("VARCHAR");
 
                     b.Property<double>("OnlineTime")
-                        .HasColumnType("double");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("double")
+                        .HasDefaultValue(0.0);
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
@@ -101,7 +113,9 @@ namespace GenX.Server.Migrations
                         .HasColumnType("VARCHAR");
 
                     b.Property<int>("Status")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.HasKey("ID");
 
@@ -110,25 +124,27 @@ namespace GenX.Server.Migrations
 
             modelBuilder.Entity("GenX.Server.Database.DbFriend", b =>
                 {
-                    b.HasOne("GenX.Server.Database.DbUser", "FriendUser")
-                        .WithMany()
-                        .HasForeignKey("FriendID")
+                    b.HasOne("GenX.Server.Database.DbUser", "Friend")
+                        .WithMany("FriendOf")
+                        .HasForeignKey("FriendId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("GenX.Server.Database.DbUser", "User")
                         .WithMany("Friends")
-                        .HasForeignKey("UserID")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("FriendUser");
+                    b.Navigation("Friend");
 
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("GenX.Server.Database.DbUser", b =>
                 {
+                    b.Navigation("FriendOf");
+
                     b.Navigation("Friends");
                 });
 #pragma warning restore 612, 618

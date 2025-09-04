@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
+using GenX.Client.Properties;
 using iNKORE.UI.WPF.Modern;
 
 namespace GenX.Client.ViewModels.Content;
@@ -62,15 +63,21 @@ public partial class SettingsThemeContentViewModel : ObservableRecipient
         {
             case "Light":
                 ThemeManager.Current.ApplicationTheme = ApplicationTheme.Light;
+                Settings.Default.Theme = nameof(ApplicationTheme.Light);
                 break;
             case "Dark":
                 ThemeManager.Current.ApplicationTheme = ApplicationTheme.Dark;
+                Settings.Default.Theme = nameof(ApplicationTheme.Dark);
                 break;
         }
+
+        Settings.Default.Save();
     }
 
     private void SelectAccentColor(Color value)
     {
         ThemeManager.Current.AccentColor = value;
+        Settings.Default.Accent = value.ToString();
+        Settings.Default.Save();
     }
 }

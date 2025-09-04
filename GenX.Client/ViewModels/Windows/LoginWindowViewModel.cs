@@ -97,8 +97,8 @@ public partial class LoginWindowViewModel(IGenXClient client, IServiceProvider s
         switch (rep.Result)
         {
             case LoginResult.LoginSuccess:
+                serviceProvider.GetRequiredService<MainWindow>().Show();
                 serviceProvider.GetRequiredService<LoginWindow>().Close();
-                serviceProvider.GetRequiredService<LoadingWindow>().Show();
                 break;
             case LoginResult.LoginFail:
                 ErrorContent = Loc.Tr("ErrorLoginFail");

@@ -17,7 +17,7 @@ namespace GenX.Server;
 
 public static class Program
 {
-    public static IHost? Host { get; private set; }
+    private static IHost? Host { get; set; }
 
     private static async Task Main(string[] args)
     {

@@ -1,42 +1,43 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GenX.Client.Properties" GeneratedClassName="Settings">
-  <Profiles />
-  <Settings>
-    <Setting Name="Login" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="Password" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="SaveLogin" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="CreateAccountUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://github.com/</Value>
-    </Setting>
-    <Setting Name="ForgotUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://github.com/</Value>
-    </Setting>
-    <Setting Name="Theme" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Dark</Value>
-    </Setting>
-    <Setting Name="Accent" Type="System.String" Scope="User">
-      <Value Profile="(Default)">#6a00ff</Value>
-    </Setting>
-    <Setting Name="Language" Type="System.String" Scope="User">
-      <Value Profile="(Default)">fr</Value>
-    </Setting>
-    <Setting Name="Width" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1100</Value>
-    </Setting>
-    <Setting Name="Height" Type="System.String" Scope="User">
-      <Value Profile="(Default)">600</Value>
-    </Setting>
-    <Setting Name="Left" Type="System.String" Scope="User">
-      <Value Profile="(Default)">100</Value>
-    </Setting>
-    <Setting Name="Top" Type="System.String" Scope="User">
-      <Value Profile="(Default)">100</Value>
-    </Setting>
-  </Settings>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)"
+              GeneratedClassNamespace="GenX.Client.Properties" GeneratedClassName="Settings">
+    <Profiles/>
+    <Settings>
+        <Setting Name="Login" Type="System.String" Scope="User">
+            <Value Profile="(Default)"/>
+        </Setting>
+        <Setting Name="Password" Type="System.String" Scope="User">
+            <Value Profile="(Default)"/>
+        </Setting>
+        <Setting Name="SaveLogin" Type="System.Boolean" Scope="User">
+            <Value Profile="(Default)">False</Value>
+        </Setting>
+        <Setting Name="CreateAccountUrl" Type="System.String" Scope="User">
+            <Value Profile="(Default)">https://github.com/</Value>
+        </Setting>
+        <Setting Name="ForgotUrl" Type="System.String" Scope="User">
+            <Value Profile="(Default)">https://github.com/</Value>
+        </Setting>
+        <Setting Name="Theme" Type="System.String" Scope="User">
+            <Value Profile="(Default)">Dark</Value>
+        </Setting>
+        <Setting Name="Accent" Type="System.String" Scope="User">
+            <Value Profile="(Default)">#6a00ff</Value>
+        </Setting>
+        <Setting Name="Language" Type="System.String" Scope="User">
+            <Value Profile="(Default)">fr</Value>
+        </Setting>
+        <Setting Name="Width" Type="System.String" Scope="User">
+            <Value Profile="(Default)">1100</Value>
+        </Setting>
+        <Setting Name="Height" Type="System.String" Scope="User">
+            <Value Profile="(Default)">600</Value>
+        </Setting>
+        <Setting Name="Left" Type="System.String" Scope="User">
+            <Value Profile="(Default)">100</Value>
+        </Setting>
+        <Setting Name="Top" Type="System.String" Scope="User">
+            <Value Profile="(Default)">100</Value>
+        </Setting>
+    </Settings>
 </SettingsFile>

@@ -21,7 +21,7 @@ public class UserDatasHandler
             LastLogoutTime = user.LastLogoutTime.ToString(CultureInfo.CurrentCulture),
             OnlineTime = user.OnlineTime,
             Pseudo = user.Pseudo,
-            Status = user.Status
+            Status = user.Status, Avatar = user.Avatar
         };
 
         client.Send(rep);

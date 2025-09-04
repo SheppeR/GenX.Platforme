@@ -1,5 +1,7 @@
 ﻿using System.IO;
+using System.Windows;
 using System.Windows.Navigation;
+using GenX.Client.ViewModels.Windows;
 using iNKORE.UI.WPF.Modern.Controls;
 using iNKORE.UI.WPF.Modern.Controls.Primitives;
 
@@ -11,6 +13,7 @@ public partial class MainWindow
     {
         InitializeComponent();
         NavigationView.SelectedItem = NavigationView.MenuItems[0];
+        Loaded += OnLoaded;
     }
 
     private void OnSelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -60,5 +63,10 @@ public partial class MainWindow
                 break;
             }
         }
+    }
+
+    private void OnLoaded(object sender, RoutedEventArgs e)
+    {
+        App.GetRequiredService<MainWindowViewModel>().Send();
     }
 }

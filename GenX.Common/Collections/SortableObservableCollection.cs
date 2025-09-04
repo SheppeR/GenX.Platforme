@@ -1,60 +1,62 @@
 ﻿using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using GenX.Network.Packets.FriendsDatas;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace GenX.Common.Collections;
 
-public class SortedObservableCollection<T>(IComparer<T> comparer) : ObservableCollection<T>
+public class DispatcherSortedObservableCollection<T>(IComparer<T> comparer) : ObservableCollection<T>
 {
     private readonly IComparer<T> _comparer = comparer ?? throw new ArgumentNullException(nameof(comparer));
+    private readonly Dispatcher _dispatcher = Application.Current.Dispatcher;
 
-    protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+    public new void Add(T item)
     {
-        base.OnCollectionChanged(e);
-
-        if (e.Action == NotifyCollectionChangedAction.Add || e.Action == NotifyCollectionChangedAction.Replace)
+        if (_dispatcher.CheckAccess())
         {
+            base.Add(item);
             Sort();
+        }
+        else
+        {
+            _dispatcher.Invoke(() => base.Add(item));
+            _dispatcher.Invoke(Sort);
+        }
+    }
+
+    public new bool Remove(T item)
+    {
+        if (_dispatcher.CheckAccess())
+        {
+            return base.Remove(item);
+        }
+
+        return _dispatcher.Invoke(() => base.Remove(item));
+    }
+
+    public new void Clear()
+    {
+        if (_dispatcher.CheckAccess())
+        {
+            base.Clear();
+        }
+        else
+        {
+            _dispatcher.Invoke(base.Clear);
         }
     }
 
     public void Sort()
     {
-        var items = Items.ToList();
+        var items = this.ToList();
         items.Sort(_comparer);
-        Items.Clear();
+
+        base.ClearItems();
         foreach (var item in items)
         {
-            Items.Add(item);
+            base.Add(item);
         }
 
         OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-    }
-}
-
-public class FriendResultComparer : IComparer<FriendDatas>
-{
-    public int Compare(FriendDatas? x, FriendDatas? y)
-    {
-        if (x == null || y == null)
-        {
-            return x == null ? y == null ? 0 : -1 : 1;
-        }
-
-        if (x.IsAccepted != y.IsAccepted)
-        {
-            return x.IsAccepted ? 1 : -1;
-        }
-
-        var xStatusPriority = x.Status == 3 ? 0 : 1;
-        var yStatusPriority = y.Status == 3 ? 0 : 1;
-        if (xStatusPriority != yStatusPriority)
-        {
-            return xStatusPriority.CompareTo(yStatusPriority);
-        }
-
-        var xPseudo = x.Pseudo ?? string.Empty;
-        var yPseudo = y.Pseudo ?? string.Empty;
-        return string.Compare(xPseudo, yPseudo, StringComparison.OrdinalIgnoreCase);
     }
 }

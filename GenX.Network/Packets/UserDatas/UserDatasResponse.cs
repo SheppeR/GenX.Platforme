@@ -14,4 +14,6 @@ public class UserDatasResponse(RequestPacket request) : ResponsePacket(request)
     public double OnlineTime { get; set; }
     public string? Pseudo { get; set; }
     public int Status { get; set; }
+    public string? Avatar { get; set; }
+    public string? Event { get; set; }
 }

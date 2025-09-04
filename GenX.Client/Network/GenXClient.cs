@@ -20,7 +20,6 @@ public class GenXClient : IGenXClient
     public GenXClient(IHandlerInvoker handlerInvoker, IOptions<ServerInfos> serverInfos)
     {
         _handlerInvoker = handlerInvoker;
-
         _container =
             ConnectionFactory.CreateClientConnectionContainer(serverInfos.Value.Host, serverInfos.Value.Port);
         _container.AutoReconnect = true;
@@ -38,7 +37,7 @@ public class GenXClient : IGenXClient
 
     public void Send(RequestPacket request)
     {
-        _container.Send(request);
+        _container.Send(request, this);
     }
 
     public async Task<T> SendAndReceive<T>(RequestPacket request) where T : ResponsePacket
@@ -52,27 +51,22 @@ public class GenXClient : IGenXClient
     {
         Log.Debug($"Client connected to: {connection.IPRemoteEndPoint}	|	Connection Type: {connectionType}");
 
-        RegisterPacketHandlers(connection);
-    }
-
-    private void RegisterPacketHandlers(Connection connection)
-    {
-        //TODO REGISTER PACKET
-        connection.RegisterStaticPacketHandler<LoginResponse>(OnReceive);
-        connection.RegisterStaticPacketHandler<LogoutResponse>(OnReceive);
-        connection.RegisterStaticPacketHandler<UserDatasResponse>(OnReceive);
-        connection.RegisterStaticPacketHandler<FriendsDatasResponse>(OnReceive);
+        _container.RegisterPacketHandler<LoginResponse>(OnReceive, this);
+        _container.RegisterPacketHandler<LogoutResponse>(OnReceive, this);
+        _container.RegisterPacketHandler<UserDatasResponse>(OnReceive, this);
+        _container.RegisterPacketHandler<FriendsDatasResponse>(OnReceive, this);
     }
 
     private void OnReceive<T>(T packet, Connection connection)
     {
         try
         {
-            _handlerInvoker.Invoke(packet?.GetType(), packet, connection);
+            var packetType = packet?.GetType();
+            _handlerInvoker.Invoke(packetType, packet, connection);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            Log.Error($"Unknow Packet {packet?.GetType()} received from server");
+            Log.Error($"Unknow Packet {packet?.GetType()} received from server{Environment.NewLine}{ex.Message}");
         }
     }
 

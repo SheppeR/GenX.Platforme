@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GenX.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -49,8 +49,8 @@ namespace GenX.Server.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    UserID = table.Column<int>(type: "int", nullable: false),
-                    FriendID = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    FriendId = table.Column<int>(type: "int", nullable: false),
                     IsAccepted = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     RequestedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
@@ -58,14 +58,14 @@ namespace GenX.Server.Migrations
                 {
                     table.PrimaryKey("PK_DbFriend", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_DbFriend_DbUser_FriendID",
-                        column: x => x.FriendID,
+                        name: "FK_DbFriend_DbUser_FriendId",
+                        column: x => x.FriendId,
                         principalTable: "DbUser",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_DbFriend_DbUser_UserID",
-                        column: x => x.UserID,
+                        name: "FK_DbFriend_DbUser_UserId",
+                        column: x => x.UserId,
                         principalTable: "DbUser",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
@@ -73,14 +73,14 @@ namespace GenX.Server.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DbFriend_FriendID",
+                name: "IX_DbFriend_FriendId",
                 table: "DbFriend",
-                column: "FriendID");
+                column: "FriendId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DbFriend_UserID",
+                name: "IX_DbFriend_UserId",
                 table: "DbFriend",
-                column: "UserID");
+                column: "UserId");
         }
 
         /// <inheritdoc />

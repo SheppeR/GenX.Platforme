@@ -6,23 +6,26 @@
     xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     xmlns:viewModels="clr-namespace:GenX.Client.ViewModels"
-    xmlns:xf="clr-namespace:XamlFlair.WPF;assembly=XamlFlair.WPF"
+    xmlns:xamlFlair="clr-namespace:XamlFlair;assembly=XamlFlair.WPF"
     d1p1:Ignorable="d"
     ShutdownMode="OnExplicitShutdown">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <xf:XamlFlairResources />
+                <xamlFlair:XamlFlairResources />
                 <ui:ThemeResources
                     AccentColor="#A534F6"
-                    CanBeAccessedAcrossThreads="True"
+                    CanBeAccessedAcrossThreads="False"
                     RequestedTheme="Dark" />
                 <ui:XamlControlsResources />
                 <ResourceDictionary Source="/GenX.Common;component/Helpers/Converters/Converters.xaml" />
-                <ResourceDictionary Source="NotifyIconResources.xaml" />
+                <ResourceDictionary Source="/Assets/NotifyIconResources.xaml" />
+                <ResourceDictionary Source="/Assets/Animations.xaml" />
+
+
             </ResourceDictionary.MergedDictionaries>
             <viewModels:ViewModelLocator x:Key="Locator" d:IsDataSource="True" />
-
+            <SolidColorBrush x:Key="ListViewItemBackground" Color="{StaticResource LayerFillColorAlt}" />
             <!--<SolidColorBrush x:Key="{x:Static ui:ThemeKeys.ApplicationPageBackgroundThemeBrushKey}" Color="#2B2B2B"/>-->
         </ResourceDictionary>
     </Application.Resources>

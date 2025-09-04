@@ -33,9 +33,6 @@
     <Compile Update="View\FriendsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\LoadingWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="View\LoginWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

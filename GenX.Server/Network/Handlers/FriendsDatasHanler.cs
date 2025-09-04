@@ -20,7 +20,7 @@ public class FriendsDatasHanler(IFriendController friendController)
             {
                 ID = f.Friend.ID,
                 Pseudo = f.Friend.Pseudo,
-                Status = f.Friend.Status, Avatar = "https://genx.example.com/avatars/", IsAccepted = f.IsAccepted
+                Status = f.Friend.Status, Avatar = f.Friend.Avatar, IsAccepted = f.IsAccepted
             }).ToList()
         };
 

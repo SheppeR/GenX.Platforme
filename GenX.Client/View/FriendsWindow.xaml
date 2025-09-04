@@ -15,76 +15,127 @@
     ui:WindowHelper.SystemBackdropType="Acrylic11"
     ui:WindowHelper.UseModernWindowStyle="True"
     DataContext="{Binding FriendsWindow, Source={StaticResource Locator}}"
+    ResizeMode="CanResizeWithGrip"
     mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Margin="15,30,15,5"
+            Grid.Row="0"
+            DataContext="{Binding User, Source={StaticResource Locator}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Border
+                Grid.Column="0"
+                Margin="5"
+                Background="{Binding Status, Converter={StaticResource StatusToBrushConverter}}">
+                <Image
+                    Width="55"
+                    Height="55"
+                    Margin="2"
+                    Source="{Binding Avatar, TargetNullValue='pack://application:,,,/Assets/default_avatar.png'}" />
+            </Border>
+            <StackPanel
+                Grid.Column="1"
+                Margin="5,0,0,0"
+                VerticalAlignment="Center">
+                <TextBlock
+                    FontWeight="Bold"
+                    Foreground="{Binding Status, Converter={StaticResource StatusToBrushConverter}}"
+                    Text="{Binding Pseudo}" />
+                <TextBlock
+                    FontSize="12"
+                    Foreground="{Binding Status, Converter={StaticResource StatusToBrushConverter}}"
+                    Text="{Binding Status, Converter={StaticResource StatusToStringConverter}}" />
+                <TextBlock
+                    FontSize="12"
+                    Foreground="{Binding Status, Converter={StaticResource StatusToBrushConverter}}"
+                    Text="{Binding Event}" />
+            </StackPanel>
+        </Grid>
+        <Separator Grid.Row="1" Margin="15,5,15,5" />
+        <ui:ScrollViewerEx
+            Grid.Row="2"
+            AutoHideScrollBars="True"
+            VerticalScrollBarVisibility="Auto">
+            <ui:ListView
+                Margin="15,5,15,5"
+                ItemsSource="{Binding Friends}"
+                PreviewMouseWheel="OnPreviewMouseWheel"
+                SelectionMode="Single">
 
-    <ui:ScrollViewerEx AutoHideScrollBars="True" VerticalScrollBarVisibility="Auto">
-        <ui:ListView
-            Margin="5,5,15,5"
-            ItemsSource="{Binding Friends}"
-            PreviewMouseWheel="OnPreviewMouseWheel"
-            SelectionMode="Single">
 
+                <ui:ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Height="65">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Border
+                                Grid.Column="0"
+                                Margin="5"
+                                Background="{Binding Status, Converter={StaticResource StatusToBrushConverter}}">
+                                <Image
+                                    Width="55"
+                                    Height="55"
+                                    Margin="2"
+                                    Source="{Binding Avatar, TargetNullValue='pack://application:,,,/Assets/default_avatar.png'}" />
+                            </Border>
+                            <StackPanel
+                                Grid.Column="1"
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    FontWeight="Bold"
+                                    Foreground="{Binding Status, Converter={StaticResource StatusToBrushConverter}}"
+                                    Text="{Binding Pseudo}" />
+                                <TextBlock
+                                    FontSize="12"
+                                    Foreground="{Binding Status, Converter={StaticResource StatusToBrushConverter}}"
+                                    Text="{Binding Status, Converter={StaticResource StatusToStringConverter}}" />
+                                <TextBlock
+                                    FontSize="12"
+                                    Foreground="{Binding Status, Converter={StaticResource StatusToBrushConverter}}"
+                                    Text="{Binding Event}" />
+                            </StackPanel>
 
-            <ui:ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Height="55" Margin="0,5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-
-                        <Image
-                            Grid.Column="0"
-                            Width="50"
-                            Height="50"
-                            Margin="0,0,10,0"
-                            Source="{Binding Avatar, TargetNullValue='pack://application:,,,/Assets/default_avatar.png'}" />
-                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                            <TextBlock
-                                FontWeight="Bold"
-                                Foreground="{Binding Status, Converter={StaticResource StatusToBrushConverter}}"
-                                Text="{Binding Pseudo}" />
-                            <TextBlock
-                                FontSize="12"
-                                Foreground="{Binding Status, Converter={StaticResource StatusToBrushConverter}}"
-                                Text="{Binding Status, Converter={StaticResource StatusToStringConverter}}" />
-                            <TextBlock
-                                FontSize="12"
-                                Foreground="{Binding Status, Converter={StaticResource StatusToBrushConverter}}"
-                                Text="{Binding Event}"
-                                Visibility="{Binding Event, Converter={StaticResource NullOrEmptyToVisibilityConverter}}" />
-                        </StackPanel>
-
-                        <StackPanel
-                            Grid.Column="2"
-                            Margin="5,0,0,0"
-                            VerticalAlignment="Top"
-                            Orientation="Horizontal"
-                            Visibility="{Binding IsAccepted, Converter={StaticResource InverseBoolToVisibilityConverter}}">
-                            <ui:AppBarButton
-                                Width="40"
-                                Height="50"
-                                Command="{Binding DataContext.AcceptFriendCommand, RelativeSource={RelativeSource AncestorType={x:Type ui:ListView}}}"
-                                CommandParameter="{Binding ID}">
-                                <ui:AppBarButton.Icon>
-                                    <ui:FontIcon Foreground="GreenYellow"
-                                                 Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" />
-                                </ui:AppBarButton.Icon>
-                            </ui:AppBarButton>
-                            <ui:AppBarButton
-                                Width="40"
-                                Height="50"
-                                Command="{Binding DataContext.DenyFriendCommand, RelativeSource={RelativeSource AncestorType={x:Type ui:ListView}}}"
-                                CommandParameter="{Binding ID}">
-                                <ui:AppBarButton.Icon>
-                                    <ui:FontIcon Foreground="Red" Icon="{x:Static ui:SegoeFluentIcons.Clear}" />
-                                </ui:AppBarButton.Icon>
-                            </ui:AppBarButton>
-                        </StackPanel>
-                    </Grid>
-                </DataTemplate>
-            </ui:ListView.ItemTemplate>
-        </ui:ListView>
-    </ui:ScrollViewerEx>
+                            <StackPanel
+                                Grid.Column="2"
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Top"
+                                Orientation="Horizontal"
+                                Visibility="{Binding IsAccepted, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                <ui:AppBarButton
+                                    Width="40"
+                                    Height="50"
+                                    Command="{Binding DataContext.AcceptFriendCommand, RelativeSource={RelativeSource AncestorType={x:Type ui:ListView}}}"
+                                    CommandParameter="{Binding ID}">
+                                    <ui:AppBarButton.Icon>
+                                        <ui:FontIcon Foreground="GreenYellow" Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" />
+                                    </ui:AppBarButton.Icon>
+                                </ui:AppBarButton>
+                                <ui:AppBarButton
+                                    Width="40"
+                                    Height="50"
+                                    Command="{Binding DataContext.DenyFriendCommand, RelativeSource={RelativeSource AncestorType={x:Type ui:ListView}}}"
+                                    CommandParameter="{Binding ID}">
+                                    <ui:AppBarButton.Icon>
+                                        <ui:FontIcon Foreground="Red" Icon="{x:Static ui:SegoeFluentIcons.Clear}" />
+                                    </ui:AppBarButton.Icon>
+                                </ui:AppBarButton>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ui:ListView.ItemTemplate>
+            </ui:ListView>
+        </ui:ScrollViewerEx>
+    </Grid>
 </Window>

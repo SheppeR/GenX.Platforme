@@ -72,6 +72,30 @@ public class AppDBContext(DbContextOptions<AppDBContext> options, IConfiguration
             entity.Property(e => e.PasswordHash).IsRequired();
             entity.Property(e => e.Email).IsRequired();
             entity.Property(e => e.Pseudo).IsRequired();
+
+            entity.Property(u => u.IsBanned)
+                .HasDefaultValue(false); // 0
+
+            entity.Property(u => u.Status)
+                .HasDefaultValue(0);
+
+            entity.Property(u => u.Access)
+                .HasDefaultValue(0);
+
+            entity.Property(u => u.OnlineTime)
+                .HasDefaultValue(0);
+
+            entity.Property(u => u.LastLogoutTime)
+                .HasColumnType("DATETIME") // force DATETIME standard
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            entity.Property(u => u.LastLoginTime)
+                .HasColumnType("DATETIME")
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            entity.Property(u => u.CreationDate)
+                .HasColumnType("DATETIME")
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
         });
 
         modelBuilder.Entity<DbFriend>()
