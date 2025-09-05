@@ -6,7 +6,7 @@ using GenX.Client.Options;
 using GenX.Client.Properties;
 using GenX.Client.View;
 using GenX.Client.ViewModels;
-using GenX.Client.ViewModels.Content;
+using GenX.Client.ViewModels.Pages;
 using GenX.Client.ViewModels.User;
 using GenX.Client.ViewModels.Windows;
 using GenX.Common.Extensions;
@@ -42,7 +42,7 @@ public partial class App
                 _ = services.AddTransient<FriendsWindow>();
                 _ = services.AddSingleton<FriendsWindowViewModel>();
 
-                _ = services.AddSingleton<SettingsThemeContentViewModel>();
+                _ = services.AddSingleton<SettingsPageViewModel>();
 
                 _ = services.AddSingleton<IGenXClient, GenXClient>();
                 _ = services.AddSingleton<UserViewModel>();

@@ -21,12 +21,6 @@
     <Compile Update="Pages\HomePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\SettingsContent\SettingsOther.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Pages\SettingsContent\SettingsTheme.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Pages\SettingsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

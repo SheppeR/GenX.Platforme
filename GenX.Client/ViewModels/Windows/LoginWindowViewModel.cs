@@ -16,17 +16,20 @@ namespace GenX.Client.ViewModels.Windows;
 
 public partial class LoginWindowViewModel(IGenXClient client, IServiceProvider serviceProvider) : ObservableRecipient
 {
-    private string? _errorContent;
-    private bool _isLoading;
+    [ObservableProperty] private string? _errorContent;
 
-    private bool _loginButtonEnabled;
+    [ObservableProperty] private bool _isLoading;
+
+    [ObservableProperty] private bool _loginButtonEnabled;
+
+    [ObservableProperty] private bool _saveLoginChecked = Settings.Default.SaveLogin;
+
     private string _loginText = !string.IsNullOrEmpty(Settings.Default.Login) ? Settings.Default.Login : string.Empty;
+
 
     private string? _passwordText = !string.IsNullOrEmpty(Settings.Default.Password)
         ? DecryptPassword(Settings.Default.Password)
         : string.Empty;
-
-    private bool _saveLoginChecked = Settings.Default.SaveLogin;
 
     public string LoginText
     {
@@ -46,30 +49,6 @@ public partial class LoginWindowViewModel(IGenXClient client, IServiceProvider s
             SetProperty(ref _passwordText, value);
             CheckText();
         }
-    }
-
-    public bool SaveLoginChecked
-    {
-        get => _saveLoginChecked;
-        set => SetProperty(ref _saveLoginChecked, value);
-    }
-
-    public bool LoginButtonEnabled
-    {
-        get => _loginButtonEnabled;
-        set => SetProperty(ref _loginButtonEnabled, value);
-    }
-
-    public bool IsLoading
-    {
-        get => _isLoading;
-        set => SetProperty(ref _isLoading, value);
-    }
-
-    public string? ErrorContent
-    {
-        get => _errorContent;
-        set => SetProperty(ref _errorContent, value);
     }
 
     [RelayCommand]

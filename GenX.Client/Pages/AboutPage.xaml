@@ -9,7 +9,142 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
 
-    <Grid>
-        <TextBlock Text="ABOUT" />
-    </Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="0,0,60,0">
+            <TextBlock
+                Margin="0,0,0,20"
+                Text="{Tr AboutText}"
+                TextWrapping="Wrap" />
+
+            <TextBlock
+                Margin="0,0,0,5"
+                FontSize="18"
+                FontWeight="Bold"
+                Text="{Tr FunctionTitle}" />
+            <TextBlock Text="{Tr FunctionText1}" />
+            <TextBlock Text="{Tr FunctionText2}" />
+            <TextBlock Text="{Tr FunctionText3}" />
+            <TextBlock Margin="0,0,0,20" Text="{Tr FunctionText4}" />
+
+            <TextBlock
+                Margin="0,10,0,5"
+                FontSize="18"
+                FontWeight="Bold"
+                Text="{Tr CreditsTitle}" />
+
+            <TextBlock Text="{Tr CreditsText}" TextWrapping="Wrap" />
+
+            <StackPanel Margin="10,5,0,20">
+                <TextBlock>
+                    <Hyperlink NavigateUri="https://github.com/codingseb/Localization" RequestNavigate="Hyperlink_RequestNavigate">
+                        • CodingSeb.Localization (v1.4.0)
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock>
+                    <Hyperlink NavigateUri="https://github.com/codingseb/Localization" RequestNavigate="Hyperlink_RequestNavigate">
+                        • CodingSeb.Localization.JsonFileLoader (v1.4.0)
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock>
+                    <Hyperlink NavigateUri="https://github.com/codingseb/Localization" RequestNavigate="Hyperlink_RequestNavigate">
+                        • CodingSeb.Localization.WPF (v1.4.1)
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock>
+                    <Hyperlink NavigateUri="https://github.com/CommunityToolkit/dotnet" RequestNavigate="Hyperlink_RequestNavigate">
+                        • CommunityToolkit.Mvvm (v8.4.0)
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock>
+                    <Hyperlink NavigateUri="https://github.com/HavenDV/H.NotifyIcon" RequestNavigate="Hyperlink_RequestNavigate">
+                        • H.NotifyIcon.Wpf (v2.3.0)
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock>
+                    <Hyperlink NavigateUri="https://github.com/iNKORE-NET/UI.WPF.Modern" RequestNavigate="Hyperlink_RequestNavigate">
+                        • iNKORE.UI.WPF.Modern (v0.10.1)
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock>
+                    <Hyperlink NavigateUri="https://github.com/dotnet/runtime" RequestNavigate="Hyperlink_RequestNavigate">
+                        • Microsoft.Extensions.DependencyInjection (v9.0.8)
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock>
+                    <Hyperlink NavigateUri="https://github.com/dotnet/runtime" RequestNavigate="Hyperlink_RequestNavigate">
+                        • Microsoft.Extensions.Hosting (v9.0.8)
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock>
+                    <Hyperlink NavigateUri="https://github.com/Toemsel/Network" RequestNavigate="Hyperlink_RequestNavigate">
+                        • Network (v6.2.5.23)
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock>
+                    <Hyperlink NavigateUri="https://github.com/serilog/serilog" RequestNavigate="Hyperlink_RequestNavigate">
+                        • Serilog (v4.3.0)
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock>
+                    <Hyperlink NavigateUri="https://github.com/serilog/serilog-extensions-hosting" RequestNavigate="Hyperlink_RequestNavigate">
+                        • Serilog.Extensions.Hosting (v9.0.0)
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock>
+                    <Hyperlink NavigateUri="https://github.com/serilog/serilog-extensions-logging" RequestNavigate="Hyperlink_RequestNavigate">
+                        • Serilog.Extensions.Logging (v9.0.2)
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock>
+                    <Hyperlink NavigateUri="https://github.com/serilog/serilog-sinks-file" RequestNavigate="Hyperlink_RequestNavigate">
+                        • Serilog.Sinks.File (v7.0.0)
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock>
+                    <Hyperlink NavigateUri="https://github.com/jovian007/Sylver.HandlerInvoker" RequestNavigate="Hyperlink_RequestNavigate">
+                        • Sylver.HandlerInvoker (v1.1.2)
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock>
+                    <Hyperlink NavigateUri="https://dotnet.microsoft.com/fr-fr/" RequestNavigate="Hyperlink_RequestNavigate">
+                        • System.Text.RegularExpressions (v4.3.1)
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock>
+                    <Hyperlink NavigateUri="https://github.com/XamlFlair/XamlFlair" RequestNavigate="Hyperlink_RequestNavigate">
+                        • XamlFlair.WPF (v1.2.13)
+                    </Hyperlink>
+                </TextBlock>
+            </StackPanel>
+
+            <TextBlock
+                Margin="0,0,0,5"
+                FontSize="18"
+                FontWeight="Bold"
+                Text="{Tr ThanksTitle}" />
+            <TextBlock
+                Margin="0,0,0,20"
+                Text="{Tr ThanksText}"
+                TextWrapping="Wrap" />
+
+            <TextBlock
+                Margin="0,0,0,5"
+                FontSize="18"
+                FontWeight="Bold"
+                Text="{Tr DevTitle}" />
+            <WrapPanel>
+
+                <TextBlock Margin="0,0,0,10" Text="{Tr DevText1}" />
+                <TextBlock
+                    Margin="5,0,0,10"
+                    FontWeight="Bold"
+                    TextWrapping="Wrap">
+                    <Hyperlink NavigateUri="https://github.com/SheppeR" RequestNavigate="Hyperlink_RequestNavigate">
+                        SheppeR
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock Margin="5,0,0,10" Text="{Tr DevText2}" />
+            </WrapPanel>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

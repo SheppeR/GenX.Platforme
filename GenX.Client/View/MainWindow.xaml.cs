@@ -26,6 +26,8 @@ public partial class MainWindow
             {
                 ContentFrame.Source = new Uri(pagePath, UriKind.Relative);
             }
+
+            sender.Header = item.Content;
         }
     }
 
@@ -46,6 +48,7 @@ public partial class MainWindow
         }
 
         var pageName = Path.GetFileNameWithoutExtension(e.Uri.ToString());
+
         foreach (var menuItem in NavigationView.MenuItems.OfType<NavigationViewItem>())
         {
             if ((string)menuItem.Tag == pageName)

@@ -1,4 +1,4 @@
-﻿using GenX.Client.ViewModels.Content;
+﻿using GenX.Client.ViewModels.Pages;
 using GenX.Client.ViewModels.User;
 using GenX.Client.ViewModels.Windows;
 
@@ -16,6 +16,5 @@ public class ViewModelLocator
 
     public UserViewModel User => App.GetRequiredService<UserViewModel>();
 
-    public SettingsThemeContentViewModel SettingsThemeContent =>
-        App.GetRequiredService<SettingsThemeContentViewModel>();
+    public SettingsPageViewModel SettingsPage => App.GetRequiredService<SettingsPageViewModel>();
 }

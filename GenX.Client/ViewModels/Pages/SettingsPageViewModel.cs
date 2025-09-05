@@ -4,15 +4,15 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using GenX.Client.Properties;
 using iNKORE.UI.WPF.Modern;
 
-namespace GenX.Client.ViewModels.Content;
+namespace GenX.Client.ViewModels.Pages;
 
-public partial class SettingsThemeContentViewModel : ObservableRecipient
+public class SettingsPageViewModel : ObservableRecipient
 {
     private Color _selectedAccentColor;
     private string? _selectedTheme;
     private ObservableCollection<string> _themes;
 
-    public SettingsThemeContentViewModel()
+    public SettingsPageViewModel()
     {
         _themes =
         [

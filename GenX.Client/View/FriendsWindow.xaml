@@ -23,8 +23,9 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Margin="15,30,15,5"
+        <Grid
             Grid.Row="0"
+            Margin="15,30,15,5"
             DataContext="{Binding User, Source={StaticResource Locator}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -115,20 +116,26 @@
                                 Visibility="{Binding IsAccepted, Converter={StaticResource InverseBoolToVisibilityConverter}}">
                                 <ui:AppBarButton
                                     Width="40"
-                                    Height="50"
+                                    Height="40"
                                     Command="{Binding DataContext.AcceptFriendCommand, RelativeSource={RelativeSource AncestorType={x:Type ui:ListView}}}"
                                     CommandParameter="{Binding ID}">
                                     <ui:AppBarButton.Icon>
-                                        <ui:FontIcon Foreground="GreenYellow" Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" />
+                                        <ui:FontIcon
+                                            FontSize="20"
+                                            Foreground="GreenYellow"
+                                            Icon="{x:Static ui:SegoeFluentIcons.CheckMark}" />
                                     </ui:AppBarButton.Icon>
                                 </ui:AppBarButton>
                                 <ui:AppBarButton
                                     Width="40"
-                                    Height="50"
+                                    Height="40"
                                     Command="{Binding DataContext.DenyFriendCommand, RelativeSource={RelativeSource AncestorType={x:Type ui:ListView}}}"
                                     CommandParameter="{Binding ID}">
                                     <ui:AppBarButton.Icon>
-                                        <ui:FontIcon Foreground="Red" Icon="{x:Static ui:SegoeFluentIcons.Clear}" />
+                                        <ui:FontIcon
+                                            FontSize="20"
+                                            Foreground="Red"
+                                            Icon="{x:Static ui:SegoeFluentIcons.Clear}" />
                                     </ui:AppBarButton.Icon>
                                 </ui:AppBarButton>
                             </StackPanel>
